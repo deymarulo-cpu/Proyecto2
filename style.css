@@ -38,3 +38,50 @@
   text-align: center;
   color: #fff;
 }
+
+/* PANTALLA DE INICIO ESTILO RETRO */
+.inicio {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  background: #222; /* fondo oscuro estilo retro */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Fantasy', cursive;
+}
+
+.cuadro-start {
+  border: 4px solid #000;
+  background-color: #ff6666;
+  padding: 40px 60px;
+  border-radius: 0px;
+  box-shadow: 4px 4px 0 #000;
+  text-align: center;
+}
+
+.cuadro-start h1 {
+  font-family: 'Fantasy', cursive;
+  font-size: 60px;
+  margin-bottom: 20px;
+  color: #fff;
+  text-shadow: 2px 2px 0 #000;
+}
+
+.cuadro-start button {
+  font-family: 'Fantasy', cursive;
+  font-size: 24px;
+  padding: 15px 40px;
+  border-radius: 0px;
+  border: 3px solid #000;
+  background-color: #ffcc00;
+  color: #000;
+  cursor: pointer;
+  box-shadow: 3px 3px 0 #000;
+  transition: 0.2s;
+}
+
+.cuadro-start button:hover {
+  background-color: #ffaa00;
+}
