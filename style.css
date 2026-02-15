@@ -1,3 +1,18 @@
+body {
+  margin: 0;
+  height: 100vh;
+  background: linear-gradient(45deg, #ff00ff, #ff1493, #ff00ff);
+  background-size: 400% 400%;
+  animation: neonFondo 6s ease infinite;
+}
+
+/* Animación fondo neón */
+@keyframes neonFondo {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
 .container {
   display: flex;
   flex-direction: column;
@@ -26,11 +41,11 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: #222; /* fondo oscuro estilo retro */
+  background: transparent; /* ahora deja ver el fondo neón */
   display: flex;
   justify-content: center;
   align-items: center;
-  font-family: 'Fantasy', cursive;
+  font-family: 'Press Start 2P', cursive;
 }
 
 .cuadro-start {
@@ -43,26 +58,10 @@
 }
 
 .cuadro-start h1 {
-  font-family: 'Fantasy', cursive;
-  font-size: 60px;
-  margin-bottom: 20px;
+  font-size: 40px;
   color: #fff;
-  text-shadow: 2px 2px 0 #000;
-}
-
-.cuadro-start button {
-  font-family: 'Fantasy', cursive;
-  font-size: 24px;
-  padding: 15px 40px;
-  border-radius: 0;
-  border: 3px solid #000;
-  background-color: #ffcc00;
-  color: #000;
-  cursor: pointer;
-  box-shadow: 3px 3px 0 #000;
-  transition: 0.2s;
-}
-
-.cuadro-start button:hover {
-  background-color: #ffaa00;
+  text-shadow:
+    0 0 5px #ff00ff,
+    0 0 10px #ff00ff,
+    0 0 20px #ff00ff;
 }
