@@ -55,18 +55,23 @@ body {
   align-items: center;
 }
 
-/* CUADRO START */
+/* CUADRO START (MODIFICADO CON BORDE NEÓN ANIMADO) */
 .cuadro-start {
-  background: black;
+  background-color: black;
   padding: 50px 70px;
-  clip-path: polygon(
-    10% 0%, 90% 0%, 
-    100% 10%, 100% 90%, 
-    90% 100%, 10% 100%, 
-    0% 90%, 0% 10%
-  );
+  text-align: center;
+  position: relative;
   border: 4px solid #00f0ff;
-  box-shadow: 0 0 20px #00f0ff;
+  box-shadow:
+    0 0 10px #00f0ff,
+    0 0 20px #00f0ff,
+    0 0 40px #0044ff;
+  animation: glowBox 1.5s infinite alternate;
+}
+
+@keyframes glowBox {
+  from { box-shadow: 0 0 10px #00f0ff, 0 0 20px #0044ff; }
+  to { box-shadow: 0 0 25px #00f0ff, 0 0 60px #0044ff; }
 }
 
 /* TÍTULO NEÓN */
@@ -83,7 +88,7 @@ body {
 /* BOTÓN */
 .cuadro-start button {
   font-family: 'Press Start 2P', cursive;
-  font-size: 28px; /* más grande */
+  font-size: 28px;
   padding: 20px 50px;
   border: 4px solid #00f0ff;
   background-color: black;
@@ -95,7 +100,7 @@ body {
   transition: 0.2s;
 }
 
-/* Efecto tipo videojuego al pasar mouse */
+/* Hover botón */
 .cuadro-start button:hover {
   background-color: #00f0ff;
   color: black;
