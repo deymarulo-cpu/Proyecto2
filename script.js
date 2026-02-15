@@ -72,4 +72,12 @@ function revelar(elemento) {
     document.getElementById("mensajeFinal").innerText =
       "Y todo eso floreció por ti 🌸";
   }
+  
+}
+function aceptar() {
+  document.body.innerHTML = `
+    <div style="text-align:center; margin-top:100px;">
+      <h1>Sabía que esta historia apenas empieza 🌸</h1>
+    </div>
+  `;
 }
