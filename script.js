@@ -61,3 +61,15 @@ function mostrarNota2() {
   document.getElementById("nota1").style.display = "none";
   document.getElementById("nota2").style.display = "flex";
 }
+
+let contador = 0;
+
+function revelar(elemento) {
+  elemento.classList.add("activo");
+  contador++;
+
+  if (contador === 5) {
+    document.getElementById("mensajeFinal").innerText =
+      "Y todo eso floreció por ti 🌸";
+  }
+}
