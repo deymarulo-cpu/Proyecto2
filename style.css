@@ -42,6 +42,22 @@ body {
   transition: transform 0.3s ease;
 }
 
+.agua {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(#0f2027, #203a43, #2c5364);
+  background-size: 400% 400%;
+  animation: aguaMovimiento 15s ease infinite;
+  z-index: -1;
+}
+
+@keyframes aguaMovimiento {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
 /* CONTENEDOR */
 .container {
   display: flex;
