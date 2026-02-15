@@ -36,7 +36,7 @@ function startGame() {
 
 /* ===== CREAR ESTRELLAS ===== */
 function crearEstrellas() {
-  const contenedor = document.querySelector(".estrellas");
+  const contenedor = document.querySelector(".stars");
   const colores = ["#ffffff", "#ffd700", "#87cefa", "#ff69b4", "#c084fc"];
 
   for (let i = 0; i < 150; i++) {
@@ -58,7 +58,7 @@ function crearEstrellas() {
   }
 }
 
-/* ===== ANIMACIÓN DE PARPADEO ESTRELLAS ===== */
+/* Animación parpadeo estrellas */
 const style = document.createElement('style');
 style.innerHTML = `
 @keyframes parpadeo {
@@ -67,31 +67,13 @@ style.innerHTML = `
 }`;
 document.head.appendChild(style);
 
-/* ===== CREAR FLORES DE LOTO ===== */
+/* ===== CREAR LOTOS ===== */
 function crearLotos() {
-  const contenedor = document.querySelector(".lotos");
-  const posiciones = [
-    { clase: "loto-izq", left: "5%", bottom: "10%" },
-    { clase: "loto-der1", right: "8%", top: "25%" },
-    { clase: "loto-der2", right: "5%", bottom: "5%" }
-  ];
-
-  posiciones.forEach(pos => {
-    const loto = document.createElement("img");
-    loto.src = "loto.png"; // tu imagen de loto
-    loto.classList.add("loto", pos.clase);
-    if (pos.left) loto.style.left = pos.left;
-    if (pos.right) loto.style.right = pos.right;
-    if (pos.top) loto.style.top = pos.top;
-    if (pos.bottom) loto.style.bottom = pos.bottom;
-
-    loto.style.opacity = 0;
-    loto.style.transform = "scale(0) rotate(-20deg)";
-    contenedor.appendChild(loto);
-  });
+  const lotos = document.querySelectorAll('.loto');
+  lotos.forEach(loto => loto.classList.remove('florecer'));
 }
 
-/* ===== FLORECER LOTOS CON DELAY ===== */
+/* ===== FLORECER LOTOS ===== */
 function florecerLotos() {
   const lotos = document.querySelectorAll('.loto');
 
