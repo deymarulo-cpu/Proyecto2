@@ -46,3 +46,12 @@ function startGame() {
     transition.innerHTML = "";
   }, 1200);
 }
+function mostrarNota1() {
+  document.getElementById("pantallaInicio").style.display = "none";
+  document.getElementById("nota1").style.display = "flex";
+}
+
+function mostrarNota2() {
+  document.getElementById("nota1").style.display = "none";
+  document.getElementById("nota2").style.display = "flex";
+}
