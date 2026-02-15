@@ -161,30 +161,21 @@ html, body {
   position: absolute;
   opacity: 0;
   transform: scale(0) rotate(-20deg);
-  filter: drop-shadow(0 0 8px #ff66cc);
   transition: transform 2s ease, opacity 2s ease, filter 2s ease;
+  filter: drop-shadow(0 0 8px #ff66cc);
 }
+
+/* Animación al florecer */
 .loto.florecer {
   opacity: 1;
+  transform: scale(1) rotate(0deg);
   filter: drop-shadow(0 0 15px #ff66cc) drop-shadow(0 0 20px #ff66cc);
 }
 
-/* Tamaños y posiciones */
-.loto-izq {
-  width: 130px;
-  left: 5%;
-  bottom: 10%;
-}
-.loto-der1 {
-  width: 90px;
-  right: 8%;
-  top: 25%;
-}
-.loto-der2 {
-  width: 160px;
-  right: 5%;
-  bottom: 5%;
-}
+/* Tamaños y posiciones de cada loto */
+.loto-izq { width: 130px; left: 5%; bottom: 10%; }
+.loto-der1 { width: 90px; right: 8%; top: 25%; }
+.loto-der2 { width: 160px; right: 5%; bottom: 5%; }
 
 /* Animaciones */
 @keyframes florecer {
