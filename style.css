@@ -7,24 +7,15 @@
 
 html, body {
   height: 100%;
-}
-
-/* ============================= */
-/* FONDO GALAXIA AZUL OSCURO */
-/* ============================= */
-
-body {
-  margin: 0;
-  padding: 0;
-  min-height: 100vh;
   font-family: 'Press Start 2P', cursive;
-  color: white;
   background-color: #000814;
-  position: relative;
-  overflow-x: hidden;
+  color: white;
 }
 
-/* CONTENEDOR DE ESTRELLAS */
+/* ============================= */
+/* FONDO ESTRELLADO */
+/* ============================= */
+
 .stars {
   position: fixed;
   top: 0;
@@ -35,7 +26,6 @@ body {
   z-index: 0;
 }
 
-/* CAPA 1 */
 .stars::before,
 .stars::after {
   content: "";
@@ -71,7 +61,6 @@ body {
   animation: blink 3s infinite alternate;
 }
 
-/* Parpadeo */
 @keyframes blink {
   from { opacity: 0.5; }
   to { opacity: 1; }
@@ -126,14 +115,14 @@ body {
 }
 
 .cuadro-start h1 {
-  font-size: 36px;
+  font-size: 28px;
   margin-bottom: 30px;
 }
 
 .cuadro-start button {
   font-family: 'Press Start 2P', cursive;
-  font-size: 22px;
-  padding: 18px 40px;
+  font-size: 18px;
+  padding: 15px 35px;
   border: 3px solid #00f0ff;
   background: black;
   color: #00f0ff;
@@ -150,47 +139,11 @@ body {
 /* CONTENIDO PRINCIPAL */
 /* ============================= */
 
-.container {
+.pantalla {
+  min-height: 100vh;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 40px;
-  margin-top: 100px;
-}
-
-/* CARTAS */
-.carta {
-  background: rgba(0, 170, 255, 0.85);
-  border-radius: 15px;
-  padding: 25px;
-  margin: 20px;
-  width: 300px;
-  text-align: center;
-  color: white;
-}
-
-/* ============================= */
-/* PÉTALOS */
-/* ============================= */
-
-.petalos {
-  display: flex;
-  gap: 15px;
-  flex-wrap: wrap;
   justify-content: center;
-  margin-top: 20px;
-}
-
-.petalo {
-  background: #ff66cc;
-  padding: 12px 18px;
-  border-radius: 20px;
-  cursor: pointer;
-  transition: 0.3s;
-  color: black;
-}
-
-.petalo.activo {
-  background: deeppink;
-  color: white;
+  align-items: center;
+  position: relative;
+  z-index: 1;
 }
