@@ -59,6 +59,6 @@ function florecerLotos() {
   lotos.forEach((loto, index) => {
     setTimeout(() => {
       loto.classList.add('florecer'); // activa animación
-    }, index * 800); // delay entre cada loto
+    }, index * 800);
   });
 }
