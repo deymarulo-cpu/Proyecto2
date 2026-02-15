@@ -5,7 +5,6 @@ body {
   background-size: 400% 400%;
   animation: neonFondo 6s ease infinite;
 }
-
 /* Animación fondo neón */
 @keyframes neonFondo {
   0% { background-position: 0% 50%; }
