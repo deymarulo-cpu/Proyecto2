@@ -147,3 +147,82 @@ html, body {
   position: relative;
   z-index: 1;
 }
+/* ============================= */
+/* FLORES DE LOTO */
+/* ============================= */
+
+.lotos {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.loto {
+  position: absolute;
+  opacity: 0;
+  transform: scale(0) rotate(-20deg);
+  animation: florecer 2.5s ease-out forwards,
+             brilloLoto 2s infinite alternate ease-in-out 2.5s,
+             flotar 4s ease-in-out infinite 2.5s;
+}
+
+/* Posiciones y tamaños */
+.loto-izq {
+  width: 130px;
+  left: 5%;
+  bottom: 10%;
+  animation-delay: 0.5s;
+}
+
+.loto-der1 {
+  width: 90px;
+  right: 8%;
+  top: 25%;
+  animation-delay: 1s;
+}
+
+.loto-der2 {
+  width: 160px;
+  right: 5%;
+  bottom: 5%;
+  animation-delay: 1.5s;
+}
+
+/* Animación florecer */
+@keyframes florecer {
+  0% {
+    opacity: 0;
+    transform: scale(0) rotate(-20deg);
+  }
+  60% {
+    opacity: 1;
+    transform: scale(1.1) rotate(5deg);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+  }
+}
+
+/* Brillo rosa neón */
+@keyframes brilloLoto {
+  from {
+    filter: drop-shadow(0 0 5px #ff00aa)
+            drop-shadow(0 0 10px #ff00aa);
+  }
+  to {
+    filter: drop-shadow(0 0 20px #ff00aa)
+            drop-shadow(0 0 35px #ff66cc);
+  }
+}
+
+/* Movimiento flotante suave */
+@keyframes flotar {
+  0% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-10px) scale(1); }
+  100% { transform: translateY(0) scale(1); }
+}
