@@ -154,18 +154,13 @@ html, body {
 /* ============================= */
 
 .lotos {
-  position: absolute;
-  top: 50%;
-  left: 50%;
+  position: fixed;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
-  transform: translate(-50%, -50%);
   pointer-events: none;
   z-index: 5;
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  padding: 0 50px;
 }
 
 /* ============================= */
@@ -183,47 +178,16 @@ html, body {
 /* Clases para animación de florecer */
 .loto.florecer {
   opacity: 1;
+  transform: scale(1) rotate(0deg);
   filter: drop-shadow(0 0 15px #ff66cc) drop-shadow(0 0 20px #ff66cc);
 }
 
 /* Tamaños y posiciones según clase */
-.loto-izq {
-  width: 130px;
-  left: 5%;
-  bottom: 10%;
-  animation: florecer 2.5s ease-out forwards,
-             brilloLoto 2s infinite alternate ease-in-out 2.5s,
-             flotar 4s ease-in-out infinite 2.5s;
-}
+.loto-izq { width: 130px; left: 5%; bottom: 10%; }
+.loto-der1 { width: 90px; right: 8%; top: 25%; }
+.loto-der2 { width: 160px; right: 5%; bottom: 5%; }
 
-.loto-der1 {
-  width: 90px;
-  right: 8%;
-  top: 25%;
-  animation: florecer 2.5s ease-out forwards,
-             brilloLoto 2s infinite alternate ease-in-out 2.5s,
-             flotar 4s ease-in-out infinite 2.5s;
-}
-
-.loto-der2 {
-  width: 160px;
-  right: 5%;
-  bottom: 5%;
-  animation: florecer 2.5s ease-out forwards,
-             brilloLoto 2s infinite alternate ease-in-out 2.5s,
-             flotar 4s ease-in-out infinite 2.5s;
-}
-
-/* ============================= */
-/* ANIMACIONES FLORES */
-/* ============================= */
-
-@keyframes florecer {
-  0% { opacity: 0; transform: scale(0) rotate(-20deg); }
-  60% { opacity: 1; transform: scale(1.1) rotate(5deg); }
-  100% { opacity: 1; transform: scale(1) rotate(0deg); }
-}
-
+/* Animaciones extra */
 @keyframes brilloLoto {
   from { filter: drop-shadow(0 0 5px #ff00aa) drop-shadow(0 0 10px #ff00aa); }
   to   { filter: drop-shadow(0 0 20px #ff00aa) drop-shadow(0 0 35px #ff66cc); }
@@ -236,7 +200,4 @@ html, body {
 }
 
 /* Oculto */
-.oculto {
-  display: block;
-  opacity: 0;
-}
+.oculto { opacity: 0; }
