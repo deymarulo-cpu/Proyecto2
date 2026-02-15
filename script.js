@@ -6,6 +6,15 @@ function iniciarTodo() {
   }, 1200); // tiempo igual al de la animación
 }
 
+function abrirFlor() {
+  const flor = document.querySelector(".flor");
+  flor.classList.add("abierta");
+
+  setTimeout(() => {
+    mostrarNota1();
+  }, 1200);
+}
+
 function mostrarPagina() {
   document.getElementById("inicio").style.display = "none";
   document.getElementById("contenido").style.display = "block";
