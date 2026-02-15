@@ -16,20 +16,37 @@ html, body {
 body {
   margin: 0;
   padding: 0;
-  height: 100vh;
-  overflow: hidden;
+  min-height: 100vh;
   font-family: 'Press Start 2P', cursive;
   color: white;
-  background: #000814;
+  background-color: #000814;
   position: relative;
+  overflow-x: hidden;
 }
 
-/* CAPA 1 - Estrellas pequeñas */
-body::before {
+/* CONTENEDOR DE ESTRELLAS */
+.stars {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* CAPA 1 */
+.stars::before,
+.stars::after {
   content: "";
   position: absolute;
-  width: 200%;
-  height: 200%;
+  width: 100%;
+  height: 100%;
+  background-repeat: repeat;
+}
+
+/* Estrellas pequeñas */
+.stars::before {
   background-image:
     radial-gradient(1px 1px at 10% 20%, white, transparent),
     radial-gradient(1px 1px at 30% 80%, white, transparent),
@@ -39,38 +56,24 @@ body::before {
     radial-gradient(1px 1px at 20% 70%, white, transparent),
     radial-gradient(1px 1px at 80% 30%, white, transparent),
     radial-gradient(1px 1px at 60% 90%, white, transparent);
-  background-repeat: repeat;
-  background-size: 300px 300px;
-  animation: moveStars 80s linear infinite, blink 2s ease-in-out infinite alternate;
-  z-index: -2;
+  background-size: 250px 250px;
+  animation: blink 2s infinite alternate;
 }
 
-/* CAPA 2 - Estrellas medianas */
-body::after {
-  content: "";
-  position: absolute;
-  width: 200%;
-  height: 200%;
+/* Estrellas medianas */
+.stars::after {
   background-image:
     radial-gradient(2px 2px at 15% 50%, #cce6ff, transparent),
     radial-gradient(2px 2px at 40% 20%, #99ccff, transparent),
     radial-gradient(2px 2px at 75% 75%, #ffffff, transparent),
     radial-gradient(2px 2px at 85% 40%, #cce6ff, transparent);
-  background-repeat: repeat;
   background-size: 400px 400px;
-  animation: moveStars 120s linear infinite reverse, blink 3s ease-in-out infinite alternate;
-  z-index: -1;
-}
-
-/* Movimiento lento */
-@keyframes moveStars {
-  from { transform: translateY(0); }
-  to { transform: translateY(-1000px); }
+  animation: blink 3s infinite alternate;
 }
 
 /* Parpadeo */
 @keyframes blink {
-  from { opacity: 0.6; }
+  from { opacity: 0.5; }
   to { opacity: 1; }
 }
 
