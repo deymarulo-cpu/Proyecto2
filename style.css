@@ -22,6 +22,26 @@ body {
   100% { background-position: 0% 0%, 0% 0%, 0% 0%; }
 }
 
+/* CAPA DE TRANSICIÓN */
+.pixel-transition {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: repeat(20, 1fr);
+  grid-template-rows: repeat(20, 1fr);
+  pointer-events: none;
+  z-index: 999;
+}
+
+.pixel {
+  background: black;
+  transform: scale(0);
+  transition: transform 0.3s ease;
+}
+
 /* CONTENEDOR */
 .container {
   display: flex;
