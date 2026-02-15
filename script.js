@@ -5,7 +5,7 @@ function iniciarTodo() {
 function startGame() {
   const transition = document.querySelector(".pixel-transition");
 
-  // Crear cuadritos
+  // Crear cuadritos de transición
   for (let i = 0; i < 400; i++) {
     const pixel = document.createElement("div");
     pixel.classList.add("pixel");
@@ -16,71 +16,51 @@ function startGame() {
     }, Math.random() * 500);
   }
 
-  // Después ocultar pantalla inicio
+  // Después ocultar pantalla inicio y mostrar fondo estrellado
   setTimeout(() => {
     document.querySelector(".inicio").style.display = "none";
+    document.getElementById("pantallaPrincipal").style.display = "block";
     transition.innerHTML = "";
+
+    crearEstrellas();
+    crearLotos();
   }, 1200);
 }
 
-function abrirFlor() {
-  const flor = document.querySelector(".flor");
-  flor.classList.add("abierta");
+/* ===== CREAR ESTRELLAS ===== */
+function crearEstrellas() {
+  const contenedor = document.querySelector(".estrellas");
+  const colores = ["#ffffff", "#ffd700", "#87cefa", "#ff69b4", "#c084fc"];
 
-  setTimeout(() => {
-    mostrarNota1();
-  }, 1200);
-}
+  for (let i = 0; i < 150; i++) {
+    const estrella = document.createElement("div");
+    estrella.classList.add("estrella");
 
-function mostrarNota1() {
-  document.getElementById("pantallaInicio").style.display = "none";
-  document.getElementById("nota1").style.display = "flex";
-}
+    estrella.style.top = Math.random() * 100 + "vh";
+    estrella.style.left = Math.random() * 100 + "vw";
+    estrella.style.background =
+      colores[Math.floor(Math.random() * colores.length)];
 
-function mostrarNota2() {
-  document.getElementById("nota1").style.display = "none";
-  document.getElementById("nota2").style.display = "flex";
-}
+    estrella.style.animationDuration =
+      (1 + Math.random() * 3) + "s";
 
-function respuesta() {
-  document.getElementById("respuestaTexto").innerText =
-    "La verdad es que haces todo eso y más.";
-
-  // Pasar automáticamente a nota3 después de 2 segundos
-  setTimeout(() => {
-    document.getElementById("nota2").style.display = "none";
-    document.getElementById("nota3").style.display = "flex";
-  }, 2000);
-}
-
-let contador = 0;
-
-function revelar(elemento) {
-  if (!elemento.classList.contains("activo")) {
-    elemento.classList.add("activo");
-    contador++;
-  }
-
-  if (contador === 5) {
-    document.getElementById("mensajeFinal").innerText =
-      "Y todo eso floreció por ti 🌸";
-
-    setTimeout(() => {
-      document.getElementById("nota3").style.display = "none";
-      document.getElementById("confesion").style.display = "flex";
-    }, 2000);
+    contenedor.appendChild(estrella);
   }
 }
 
-function mostrarPropuesta() {
-  document.getElementById("confesion").style.display = "none";
-  document.getElementById("propuesta").style.display = "flex";
-}
+/* ===== CREAR FLORES DE LOTO ===== */
+function crearLotos() {
+  const contenedor = document.querySelector(".lotos");
 
-function aceptar() {
-  document.body.innerHTML = `
-    <div style="display:flex;justify-content:center;align-items:center;height:100vh;color:white;font-size:28px;text-align:center;">
-      Sabía que esta historia apenas empieza 🌸💖
-    </div>
-  `;
+  for (let i = 0; i < 6; i++) {
+    const loto = document.createElement("div");
+    loto.classList.add("loto");
+    loto.innerHTML = "🌸";
+
+    loto.style.top = Math.random() * 80 + "vh";
+    loto.style.left = Math.random() * 90 + "vw";
+    loto.style.animationDelay = Math.random() * 5 + "s";
+
+    contenedor.appendChild(loto);
+  }
 }
