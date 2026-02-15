@@ -5,19 +5,21 @@ html, body {
   height: 100%;
 }
 
-/* FONDO NEÓN AZUL */
+/* FONDO GALAXIA */
 body {
-  background: linear-gradient(45deg, #00f0ff, #0044ff, #00f0ff);
-  background-size: 400% 400%;
-  animation: neonBlueMove 6s ease infinite;
+  background: radial-gradient(circle at 20% 30%, #1a0033, transparent 40%),
+              radial-gradient(circle at 80% 70%, #000066, transparent 40%),
+              radial-gradient(circle at 50% 50%, #330066, #000011 70%);
+  background-color: #000011;
+  animation: galaxyMove 20s linear infinite;
   font-family: 'Press Start 2P', cursive;
 }
 
-/* Animación del fondo */
-@keyframes neonBlueMove {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+/* Animación lenta tipo espacio */
+@keyframes galaxyMove {
+  0% { background-position: 0% 0%, 0% 0%, 0% 0%; }
+  50% { background-position: 50% 50%, -50% -50%, 25% 25%; }
+  100% { background-position: 0% 0%, 0% 0%, 0% 0%; }
 }
 
 /* CONTENEDOR */
