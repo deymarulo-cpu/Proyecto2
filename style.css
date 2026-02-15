@@ -57,21 +57,26 @@ body {
 
 /* CUADRO START */
 .cuadro-start {
-  background-color: black;
+  background: black;
   padding: 50px 70px;
-  text-align: center;
+  border: 3px solid #00f0ff;
+  box-shadow: 0 0 15px #00f0ff;
   position: relative;
-  border: 4px solid #00f0ff;
-  box-shadow:
-    0 0 10px #00f0ff,
-    0 0 20px #00f0ff,
-    0 0 40px #0044ff;
-  animation: glowBox 1.5s infinite alternate;
+  overflow: hidden;
 }
 
-@keyframes glowBox {
-  from { box-shadow: 0 0 10px #00f0ff, 0 0 20px #0044ff; }
-  to { box-shadow: 0 0 25px #00f0ff, 0 0 60px #0044ff; }
+.cuadro-start::before {
+  content: "";
+  position: absolute;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(0,240,255,0.2) 0%, transparent 70%);
+  animation: electricMove 4s linear infinite;
+}
+
+@keyframes electricMove {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
 }
 
 /* TÍTULO NEÓN */
