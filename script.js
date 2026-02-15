@@ -51,6 +51,12 @@ function mostrarNota1() {
   document.getElementById("nota1").style.display = "flex";
 }
 
+function respuesta() {
+  document.getElementById("respuestaTexto").innerText =
+    "La verdad es que haces todo eso y más.";
+}
+
+
 function mostrarNota2() {
   document.getElementById("nota1").style.display = "none";
   document.getElementById("nota2").style.display = "flex";
