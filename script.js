@@ -1,3 +1,11 @@
+function iniciarTodo() {
+  startGame();
+
+  setTimeout(() => {
+    mostrarPagina();
+  }, 1200); // tiempo igual al de la animación
+}
+
 function mostrarPagina() {
   document.getElementById("inicio").style.display = "none";
   document.getElementById("contenido").style.display = "block";
