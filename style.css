@@ -14,21 +14,64 @@ html, body {
 /* ============================= */
 
 body {
-  background:
-    radial-gradient(circle at 20% 30%, #1a0033, transparent 40%),
-    radial-gradient(circle at 80% 70%, #000066, transparent 40%),
-    radial-gradient(circle at 50% 50%, #220044 0%, #000011 70%);
-  background-size: 200% 200%;
-  background-color: #000011;
-  animation: galaxyMove 25s linear infinite;
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  overflow: hidden;
   font-family: 'Press Start 2P', cursive;
   color: white;
+  background: #000814;
+  position: relative;
 }
 
-@keyframes galaxyMove {
-  0% { background-position: 0% 0%; }
-  50% { background-position: 100% 100%; }
-  100% { background-position: 0% 0%; }
+/* CAPA 1 - Estrellas pequeñas */
+body::before {
+  content: "";
+  position: absolute;
+  width: 200%;
+  height: 200%;
+  background-image:
+    radial-gradient(1px 1px at 10% 20%, white, transparent),
+    radial-gradient(1px 1px at 30% 80%, white, transparent),
+    radial-gradient(1px 1px at 50% 40%, white, transparent),
+    radial-gradient(1px 1px at 70% 10%, white, transparent),
+    radial-gradient(1px 1px at 90% 60%, white, transparent),
+    radial-gradient(1px 1px at 20% 70%, white, transparent),
+    radial-gradient(1px 1px at 80% 30%, white, transparent),
+    radial-gradient(1px 1px at 60% 90%, white, transparent);
+  background-repeat: repeat;
+  background-size: 300px 300px;
+  animation: moveStars 80s linear infinite, blink 2s ease-in-out infinite alternate;
+  z-index: -2;
+}
+
+/* CAPA 2 - Estrellas medianas */
+body::after {
+  content: "";
+  position: absolute;
+  width: 200%;
+  height: 200%;
+  background-image:
+    radial-gradient(2px 2px at 15% 50%, #cce6ff, transparent),
+    radial-gradient(2px 2px at 40% 20%, #99ccff, transparent),
+    radial-gradient(2px 2px at 75% 75%, #ffffff, transparent),
+    radial-gradient(2px 2px at 85% 40%, #cce6ff, transparent);
+  background-repeat: repeat;
+  background-size: 400px 400px;
+  animation: moveStars 120s linear infinite reverse, blink 3s ease-in-out infinite alternate;
+  z-index: -1;
+}
+
+/* Movimiento lento */
+@keyframes moveStars {
+  from { transform: translateY(0); }
+  to { transform: translateY(-1000px); }
+}
+
+/* Parpadeo */
+@keyframes blink {
+  from { opacity: 0.6; }
+  to { opacity: 1; }
 }
 
 /* ============================= */
