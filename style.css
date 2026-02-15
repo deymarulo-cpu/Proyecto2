@@ -58,6 +58,19 @@ body {
   100% { background-position: 0% 50%; }
 }
 
+.flor {
+  width: 150px;
+  height: 150px;
+  background: radial-gradient(circle, pink 40%, deeppink 70%);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: transform 1s ease;
+}
+
+.flor.abierta {
+  transform: scale(1.4) rotate(20deg);
+}
+
 /* CONTENEDOR */
 .container {
   display: flex;
