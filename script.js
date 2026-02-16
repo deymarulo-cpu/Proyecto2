@@ -118,12 +118,17 @@ function iniciarTodo() {
     });
 
     // ===== PANTALLA FINAL: SI/NO =====
-    document.getElementById("botonSi").addEventListener("click", () => {
-      // REPRODUCIR AUDIO BOTÓN SI
-      song4.currentTime = 0;
-      song4.play();
+document.getElementById("botonSi").addEventListener("click", () => {
+  // REPRODUCIR AUDIO BOTÓN SI
+  song4.currentTime = 0;
+  song4.play();
 
-    });
+  const pantallaFinal = document.getElementById("pantallaFinal");
+  pantallaFinal.style.display = "none";
+
+  const pantallaCorazon = document.getElementById("pantallaCorazon");
+  pantallaCorazon.style.display = "flex";
+});
 
     document.getElementById("botonNo").addEventListener("click", () => {
       const pantallaFinal = document.getElementById("pantallaFinal");
