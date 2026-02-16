@@ -1,5 +1,7 @@
 function iniciarTodo() {
-  startGame(() => { // <-- callback al final de la transición del START
+  startGame();
+
+  setTimeout(() => {
     florecerLotos();
     animarTexto();
 
@@ -10,11 +12,20 @@ function iniciarTodo() {
 
     // CLICK primer CONTINUAR
     botonPrincipal.addEventListener("click", () => {
-      // Desaparece solo la flor central
+      // Hacer desaparecer SOLO la flor central
       if (florCentral) {
         florCentral.style.transition = "opacity 0.8s, transform 0.8s";
         florCentral.style.opacity = 0;
-        florCentral.style.transform = "scale(0)";
+        florCentral.style.transform = "scale(0) translateY(50px)";
+      }
+
+      // Mover boton CONTINUAR a la posición de la flor central (opcional)
+      if (florCentral) {
+        const rectFlor = florCentral.getBoundingClientRect();
+        botonPrincipal.style.position = "absolute";
+        botonPrincipal.style.top = rectFlor.top + "px";
+        botonPrincipal.style.left = rectFlor.left + "px";
+        botonPrincipal.style.transform = "translate(0,0)";
       }
 
       // Transición a pantalla de cartas
@@ -34,22 +45,33 @@ function iniciarTodo() {
       }, 500);
     });
 
+    // CARTAS: mostrar mensaje en cuadro
+    const cartas = document.querySelectorAll("#pantallaCartas .carta");
+    const mensajeCarta = document.getElementById("mensajeCarta");
+
+    cartas.forEach(carta => {
+      carta.addEventListener("click", () => {
+        mensajeCarta.innerHTML = carta.dataset.mensaje;
+        mensajeCarta.style.display = "block";
+      });
+    });
+
     // CONTINUAR cartas -> romántica
     const botonCartas = document.getElementById("botonContinuarCartas");
     botonCartas.addEventListener("click", () => {
-      // Desaparecen las flores de los lados
+      // Hacer desaparecer las flores izquierda y derecha
       [florIzq, florDer1].forEach(flor => {
         if (flor) {
           flor.style.transition = "opacity 0.8s, transform 0.8s";
           flor.style.opacity = 0;
-          flor.style.transform = "scale(0)";
+          flor.style.transform = "scale(0) translateY(50px)";
         }
       });
 
+      // Transición a pantalla romántica
       const pantallaCartas = document.getElementById("pantallaCartas");
       pantallaCartas.style.transition = "opacity 0.8s";
       pantallaCartas.style.opacity = 0;
-
       setTimeout(() => {
         pantallaCartas.style.display = "none";
         const pantallaRomantica = document.getElementById("pantallaRomantica");
@@ -59,25 +81,45 @@ function iniciarTodo() {
         setTimeout(() => { pantallaRomantica.style.opacity = 1; }, 50);
       }, 800);
     });
-  });
-}
 
-// MODIFICACIÓN de startGame para usar callback
-function startGame(callback) {
-  const transition = document.querySelector(".pixel-transition");
-  transition.innerHTML = "";
-  for (let i = 0; i < 400; i++) {
-    const pixel = document.createElement("div");
-    pixel.classList.add("pixel");
-    transition.appendChild(pixel);
-    setTimeout(() => { pixel.style.transform = "scale(1)"; }, Math.random() * 500);
-  }
+    // CONTINUAR romántica -> pantalla final
+    const botonRomantica = document.getElementById("botonContinuarRomantica");
+    botonRomantica.addEventListener("click", () => {
+      const pantallaRomantica = document.getElementById("pantallaRomantica");
+      pantallaRomantica.style.transition = "opacity 0.8s";
+      pantallaRomantica.style.opacity = 0;
 
-  setTimeout(() => {
-    document.querySelector(".inicio").style.display = "none";
-    document.getElementById("pantallaPrincipal").style.display = "block";
-    transition.innerHTML = "";
+      setTimeout(() => {
+        pantallaRomantica.style.display = "none";
+        const pantallaFinal = document.getElementById("pantallaFinal");
+        pantallaFinal.style.display = "flex";
+        pantallaFinal.style.opacity = 0;
+        pantallaFinal.style.transition = "opacity 0.8s";
+        setTimeout(() => { pantallaFinal.style.opacity = 1; }, 50);
+      }, 800);
+    });
 
-    if (callback) callback(); // <-- aquí agregamos los listeners
-  }, 1200);
+    // Pantalla final: SI -> mostrar corazón / NO -> GAME OVER
+    document.getElementById("botonSi").addEventListener("click", () => {
+      const pantallaFinal = document.getElementById("pantallaFinal");
+      pantallaFinal.style.display = "none";
+
+      // mostrar pantalla del corazón
+      const pantallaCorazon = document.getElementById("pantallaCorazon");
+      if (pantallaCorazon) {
+        pantallaCorazon.style.display = "flex";
+        pantallaCorazon.style.opacity = 0;
+        pantallaCorazon.style.transition = "opacity 0.8s";
+        setTimeout(() => { pantallaCorazon.style.opacity = 1; }, 50);
+      }
+    });
+
+    document.getElementById("botonNo").addEventListener("click", () => {
+      const pantallaFinal = document.getElementById("pantallaFinal");
+      pantallaFinal.style.display = "none";
+      const pantallaGameOver = document.getElementById("pantallaGameOver");
+      pantallaGameOver.style.display = "flex";
+    });
+
+  }, 1500);
 }
