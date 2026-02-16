@@ -175,9 +175,9 @@ html, body {
 }
 
 .pantalla h2 {
-  line-height: 4;          /* Espacio entre líneas */
+  line-height: 3.5;          /* Espacio entre líneas */
   font-size: 30px;           /* Tamaño de letra */
-  text-align: center;     /* centra el texto horizontalmente */
+  text-align: left;     /* centra el texto horizontalmente */
   margin: 0 auto;         /* centra el bloque */
   padding: 20px;          /* espacio interno */
   max-width: 600px;       /* limita el ancho del texto */
