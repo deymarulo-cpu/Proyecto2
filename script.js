@@ -71,18 +71,45 @@ function iniciarTodo() {
     });
 
     // Pantalla final
-    document.getElementById("botonSi").addEventListener("click", () => {
-      document.getElementById("pantallaFinal").style.display = "none";
-      document.getElementById("pantallaCorazon").style.display = "flex";
-    });
+   // Pantalla final: SI -> mostrar corazón / NO -> GAME OVER
+const botonSi = document.getElementById("botonSi");
+const botonNo = document.getElementById("botonNo");
 
-    document.getElementById("botonNo").addEventListener("click", () => {
-      document.getElementById("pantallaFinal").style.display = "none";
-      document.getElementById("pantallaGameOver").style.display = "flex";
-    });
+if (botonSi) {
+  botonSi.addEventListener("click", () => {
+    const pantallaFinal = document.getElementById("pantallaFinal");
+    pantallaFinal.style.display = "none";
 
-  }, 1500);
+    // mostrar pantalla del corazón
+    const pantallaCorazon = document.getElementById("pantallaCorazon");
+    if (pantallaCorazon) {
+      pantallaCorazon.style.display = "flex";
+      pantallaCorazon.style.opacity = 0;
+      pantallaCorazon.style.transition = "opacity 0.8s";
+      setTimeout(() => {
+        pantallaCorazon.style.opacity = 1;
+      }, 50);
+    }
+  });
 }
+
+if (botonNo) {
+  botonNo.addEventListener("click", () => {
+    const pantallaFinal = document.getElementById("pantallaFinal");
+    pantallaFinal.style.display = "none";
+
+    const pantallaGameOver = document.getElementById("pantallaGameOver");
+    if (pantallaGameOver) {
+      pantallaGameOver.style.display = "flex";
+      pantallaGameOver.style.opacity = 0;
+      pantallaGameOver.style.transition = "opacity 0.8s";
+      setTimeout(() => {
+        pantallaGameOver.style.opacity = 1;
+      }, 50);
+    }
+  });
+}
+
 
 // TRANSICIÓN PIXEL
 function startGame() {
