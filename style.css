@@ -3,15 +3,13 @@
 
 html, body {
   height: 100%;
-  font-family: 'Press Start 2P', cursive;
+  font-family: 'Press Start 2P', Arial, sans-serif;
   background-color: #000814;
   color: white;
   overflow: hidden;
 }
 
-/* ============================= */
 /* FONDO ESTRELLADO */
-/* ============================= */
 .stars {
   position: fixed;
   top: 0;
@@ -31,7 +29,6 @@ html, body {
   background-repeat: repeat;
 }
 
-/* Estrellas pequeñas */
 .stars::before {
   background-image:
     radial-gradient(1px 1px at 10% 20%, white, transparent),
@@ -46,7 +43,6 @@ html, body {
   animation: blink 2s infinite alternate;
 }
 
-/* Estrellas medianas */
 .stars::after {
   background-image:
     radial-gradient(2px 2px at 15% 50%, #cce6ff, transparent),
@@ -59,9 +55,7 @@ html, body {
 
 @keyframes blink { from { opacity: 0.5; } to { opacity: 1; } }
 
-/* ============================= */
 /* TRANSICIÓN PIXEL */
-/* ============================= */
 .pixel-transition {
   position: fixed;
   top: 0;
@@ -77,9 +71,7 @@ html, body {
 
 .pixel { background: black; transform: scale(0); transition: transform 0.3s ease; }
 
-/* ============================= */
 /* PANTALLA INICIO */
-/* ============================= */
 .inicio {
   position: fixed;
   top: 0; left: 0;
@@ -102,7 +94,7 @@ html, body {
 .cuadro-start h1 { font-size: 28px; margin-bottom: 30px; }
 
 .cuadro-start button {
-  font-family: 'Press Start 2P', cursive;
+  font-family: 'Press Start 2P', Arial, sans-serif;
   font-size: 18px;
   padding: 15px 35px;
   border: 3px solid #00f0ff;
@@ -114,21 +106,36 @@ html, body {
 
 .cuadro-start button:hover { background: #00f0ff; color: black; }
 
-/* ============================= */
 /* CONTENIDO PRINCIPAL */
-/* ============================= */
 .pantalla {
   min-height: 100vh;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  justify-content: flex-start;
+  align-items: flex-start;
   position: relative;
   z-index: 1;
 }
 
-/* ============================= */
-/* FLORES DE LOTO CENTRADAS INFERIOR */
-/* ============================= */
+.pantalla h2 {
+  text-align: left;
+  line-height: 1.8;           
+  margin: 50px 0 0 0;  /* margen izquierdo eliminado */
+  padding-left: 20px;  /* separación suave del borde */
+  max-width: 600px;
+  font-size: 28px;
+  color: white;
+  overflow: hidden;
+  font-family: 'Press Start 2P', Arial, sans-serif;
+}
+
+.pantalla h2 span {
+  opacity: 0;
+  display: inline-block;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  margin-right: 2px;
+}
+
+/* FLORES DE LOTO */
 .lotos {
   position: absolute;
   bottom: 5%;
@@ -156,12 +163,10 @@ html, body {
   animation: flotar 4s ease-in-out infinite alternate, rotar 6s linear infinite;
 }
 
-/* Tamaños y efecto espejo */
 .loto-izq { width: 280px; }
 .loto-der1 { width: 280px; transform: scaleX(-1); }
 .loto-der2 { width: 450px; transform: scaleX(-1); }
 
-/* Animaciones */
 @keyframes flotar {
   0% { transform: translateY(0) scale(1); }
   50% { transform: translateY(-12px) scale(1.05); }
@@ -172,22 +177,4 @@ html, body {
   0% { transform: rotate(-3deg); }
   50% { transform: rotate(3deg); }
   100% { transform: rotate(-3deg); }
-}
-
-.pantalla h2 {
-  text-align: left;      /* alineación a la izquierda */
-  line-height: 1.8;      /* espacio entre líneas reducido */
-  margin: 50px 0 0 50px;
-  max-width: 600px;
-  font-size: 28px;
-  color: white;
-  overflow: hidden;
-  font-family: 'Press Start 2P', Arial, sans-serif; /* fallback que soporte emojis */
-}
-
-.pantalla h2 span {
-  opacity: 0;
-  display: inline-block;
-  transition: opacity 0.3s ease, transform 0.3s ease;
-  margin-right: 2px; /* espacio entre letras */
 }
