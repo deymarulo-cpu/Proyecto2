@@ -295,11 +295,16 @@ html, body {
 /* ===== PANTALLA FINAL ===== */
 #pantallaFinal {
   display: none;
+  position: relative;       /* Para controlar z-index de botones */
   flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
   min-height: 100vh;
+  padding: 20px;
+  background-color: #000814;
+  z-index: 100;
+  overflow: visible;        /* Evita que algo se corte */
 }
 
 /* ===== BOTONES CENTRADOS PANTALLA FINAL ===== */
@@ -308,37 +313,26 @@ html, body {
   gap: 30px;
   justify-content: center;
   margin-top: 40px;
+  z-index: 101;
 }
 
-/* ===== GAME OVER ===== */
-#pantallaGameOver {
-  display: none;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  min-height: 100vh;
-}
-
-/* ===== CUADRO DE MENSAJE CARTA ===== */
-.mensaje-carta {
-  position: absolute;
-  top: 30%;
-  left: 50%;
-  transform: translateX(-50%);
-  max-width: 400px;
-  padding: 20px;
+.final-buttons button {
+  padding: 15px 35px;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 18px;
   border: 3px solid #00f0ff;
-  background-color: #111;
+  background-color: black;
   color: #00f0ff;
-  text-align: center;
-  font-size: 14px;
-  z-index: 10;
-  border-radius: 10px;
-  box-shadow: 0 0 20px #00f0ff;
+  cursor: pointer;
+  transition: 0.2s;
 }
 
-/* ===== CORAZÓN ESTILO NÉON ===== */
+.final-buttons button:hover {
+  background-color: #00f0ff;
+  color: black;
+}
+
+/* ===== PANTALLA CORAZÓN ===== */
 #pantallaCorazon {
   display: none;
   flex-direction: column;
@@ -347,18 +341,24 @@ html, body {
   min-height: 100vh;
   text-align: center;
   background-color: #000814;
+  z-index: 100;
 }
 
 .corazon {
   width: 300px;
   height: 300px;
   background: radial-gradient(circle, #ff66cc 0%, #ff33aa 70%);
-  clip-path: polygon(50% 0%, 61% 13%, 75% 15%, 87% 23%, 94% 35%, 95% 50%, 87% 65%, 75% 75%, 61% 85%, 50% 95%, 39% 85%, 25% 75%, 13% 65%, 5% 50%, 6% 35%, 13% 23%, 25% 15%, 39% 13%);
+  clip-path: polygon(
+    50% 0%, 61% 13%, 75% 15%, 87% 23%, 94% 35%, 95% 50%, 
+    87% 65%, 75% 75%, 61% 85%, 50% 95%, 39% 85%, 25% 75%, 
+    13% 65%, 5% 50%, 6% 35%, 13% 23%, 25% 15%, 39% 13%
+  );
   display: flex;
   justify-content: center;
   align-items: center;
   box-shadow: 0 0 20px #ff66cc, 0 0 50px #ff33aa;
   animation: latido 1s infinite alternate;
+  margin-bottom: 20px;
 }
 
 .corazon span {
@@ -374,4 +374,16 @@ html, body {
   0% { transform: scale(1); }
   50% { transform: scale(1.1); }
   100% { transform: scale(1); }
+}
+
+/* ===== PANTALLA GAME OVER ===== */
+#pantallaGameOver {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  min-height: 100vh;
+  background-color: #000814;
+  color: white;
 }
