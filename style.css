@@ -181,3 +181,8 @@ html, body {
   max-width: 600px;       /* limita ancho del texto */
   font-size: 28px;        /* tamaño de letra */
 }
+h2 {
+  text-align: left;       /* Alinea el texto a la izquierda */
+  margin-left: 20px;      /* Ajusta la distancia desde el borde izquierdo */
+  line-height: 3;         /* Espacio entre líneas */
+}
