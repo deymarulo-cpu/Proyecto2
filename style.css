@@ -176,16 +176,17 @@ html, body {
 
 .pantalla h2 {
   text-align: left;
-  line-height: 3;             /* espacio entre líneas */
-  margin: 50px 0 0 50px;      /* margen desde arriba y izquierda */
+  line-height: 1.8; /* menos espacio entre líneas */
+  margin: 50px 0 0 50px;
   max-width: 600px;
   font-size: 28px;
   color: white;
-  overflow: hidden;            /* importante para animación */
+  overflow: hidden;
 }
 
 .pantalla h2 span {
   opacity: 0;
   display: inline-block;
-  transition: opacity 0.3s ease;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  margin-right: 2px; /* espacio entre letras */
 }
