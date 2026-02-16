@@ -80,19 +80,6 @@ if (botonSi) {
     const pantallaFinal = document.getElementById("pantallaFinal");
     pantallaFinal.style.display = "none";
 
-    // mostrar pantalla del corazón
-    const pantallaCorazon = document.getElementById("pantallaCorazon");
-    if (pantallaCorazon) {
-      pantallaCorazon.style.display = "flex";
-      pantallaCorazon.style.opacity = 0;
-      pantallaCorazon.style.transition = "opacity 0.8s";
-      setTimeout(() => {
-        pantallaCorazon.style.opacity = 1;
-      }, 50);
-    }
-  });
-}
-
 if (botonNo) {
   botonNo.addEventListener("click", () => {
     const pantallaFinal = document.getElementById("pantallaFinal");
