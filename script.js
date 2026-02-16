@@ -223,3 +223,13 @@ document.getElementById("botonSi").addEventListener("click", () => {
     crearCorazonesRomanticos();
   }, 500);
 });
+document.getElementById("botonSi").addEventListener("click", () => {
+  setTimeout(() => {
+    const mensaje = document.createElement("p");
+    mensaje.innerText = "Eres lo mejor que me pasó 💖";
+    mensaje.style.marginTop = "20px";
+    mensaje.style.fontSize = "14px";
+    mensaje.style.textShadow = "0 0 10px #ff66cc";
+    document.getElementById("pantallaCorazon").appendChild(mensaje);
+  }, 1500);
+});
