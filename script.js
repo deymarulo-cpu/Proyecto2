@@ -1,9 +1,17 @@
+const song1 = new Audio("audios/song1.mp3"); // START
+const song2 = new Audio("audios/song2.mp3"); // carta 1
+const song3 = new Audio("audios/song3.mp3"); // carta 2
+const song4 = new Audio("audios/song4.mp3"); // boton SI
+
 function iniciarTodo() {
   startGame(() => { // callback al terminar la animación de START
     florecerLotos();
     animarTexto();
 
     const botonPrincipal = document.getElementById("botonContinuarPrincipal");
+botonPrincipal.addEventListener("click", () => {
+  song1.currentTime = 0;
+  song1.play();
     const florCentral = document.querySelector(".loto-der2");
     const florIzq = document.querySelector(".loto-izq");
     const florDer = document.querySelector(".loto-der1");
@@ -31,6 +39,21 @@ function iniciarTodo() {
         }, 800);
       }, 500);
     });
+const cartas = document.querySelectorAll("#pantallaCartas .carta");
+cartas.forEach(carta => {
+  carta.addEventListener("click", () => {
+    const index = carta.dataset.index; // "1" o "2"
+
+    if (index === "1") song2.currentTime = 0, song2.play();
+    if (index === "2") song3.currentTime = 0, song3.play();
+
+    mensajeCarta.innerHTML = carta.dataset.mensaje;
+    mensajeCarta.style.display = "block";
+    mensajeCarta.style.opacity = 0;
+    mensajeCarta.style.transition = "opacity 0.5s";
+    setTimeout(() => { mensajeCarta.style.opacity = 1; }, 50);
+  });
+});
 
     // ===== MOSTRAR MENSAJE CARTA =====
     const cartas = document.querySelectorAll("#pantallaCartas .carta");
