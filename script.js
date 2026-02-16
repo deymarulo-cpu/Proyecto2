@@ -1,3 +1,9 @@
+// ===== AUDIOS =====
+const song1 = new Audio("https://raw.githubusercontent.com/tuusuario/tuRepo/main/song1.mp3"); // START
+const song2 = new Audio("https://raw.githubusercontent.com/tuusuario/tuRepo/main/song2.mp3"); // carta 1
+const song3 = new Audio("https://raw.githubusercontent.com/tuusuario/tuRepo/main/song3.mp3"); // carta 2
+const song4 = new Audio("https://raw.githubusercontent.com/tuusuario/tuRepo/main/song4.mp3"); // botón SI
+
 function iniciarTodo() {
   startGame(() => { // callback al terminar la animación de START
     florecerLotos();
@@ -10,6 +16,10 @@ function iniciarTodo() {
 
     // ===== PRIMER CONTINUAR =====
     botonPrincipal.addEventListener("click", () => {
+      // REPRODUCIR AUDIO START
+      song1.currentTime = 0;
+      song1.play();
+
       // Desaparece solo la flor central
       if (florCentral) {
         florCentral.style.transition = "opacity 0.8s, transform 0.8s";
@@ -33,19 +43,25 @@ function iniciarTodo() {
         }, 800);
       }, 500);
     });
-// ===== MOSTRAR MENSAJE CARTA =====
-const cartas = document.querySelectorAll("#pantallaCartas .carta");
-const mensajeCarta = document.getElementById("mensajeCarta");
 
-cartas.forEach(carta => {
-  carta.addEventListener("click", () => {
-    mensajeCarta.innerHTML = carta.dataset.mensaje;
-    mensajeCarta.style.display = "block";
-    mensajeCarta.style.opacity = 0;
-    mensajeCarta.style.transition = "opacity 0.5s";
-    setTimeout(() => { mensajeCarta.style.opacity = 1; }, 50);
-  });
-});
+    // ===== MOSTRAR MENSAJE CARTA =====
+    const cartas = document.querySelectorAll("#pantallaCartas .carta");
+    const mensajeCarta = document.getElementById("mensajeCarta");
+
+    cartas.forEach(carta => {
+      carta.addEventListener("click", () => {
+        // REPRODUCIR AUDIO SEGÚN LA CARTA
+        const index = carta.dataset.index; // "1" o "2"
+        if (index === "1") { song2.currentTime = 0; song2.play(); }
+        if (index === "2") { song3.currentTime = 0; song3.play(); }
+
+        mensajeCarta.innerHTML = carta.dataset.mensaje;
+        mensajeCarta.style.display = "block";
+        mensajeCarta.style.opacity = 0;
+        mensajeCarta.style.transition = "opacity 0.5s";
+        setTimeout(() => { mensajeCarta.style.opacity = 1; }, 50);
+      });
+    });
 
     // ===== CONTINUAR CARTAS =====
     const botonCartas = document.getElementById("botonContinuarCartas");
@@ -93,6 +109,10 @@ cartas.forEach(carta => {
 
     // ===== PANTALLA FINAL: SI/NO =====
     document.getElementById("botonSi").addEventListener("click", () => {
+      // REPRODUCIR AUDIO BOTÓN SI
+      song4.currentTime = 0;
+      song4.play();
+
       window.location.href = "https://vt.tiktok.com/ZSmkXQ9mE/";
     });
 
