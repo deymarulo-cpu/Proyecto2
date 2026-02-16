@@ -1,8 +1,18 @@
 // ===== AUDIOS =====
-const song1 = new Audio("audios/SONG.1.MP3");
-const song2 = new Audio("audios/SONG.2.MP3");
-const song3 = new Audio("audios/SONG.3.MP3");
-const song4 = new Audio("audios/SONG.4.MP3");
+const song1 = document.getElementById("audioStart");
+const song2 = document.getElementById("audioCarta1");
+const song3 = document.getElementById("audioCarta2");
+const song4 = document.getElementById("audioSi");
+
+song1.currentTime = 0;
+song1.play();
+
+document.addEventListener("click", () => {
+    song1.load();
+    song2.load();
+    song3.load();
+    song4.load();
+}, { once: true });
 
 function iniciarTodo() {
   startGame(() => { // callback al terminar la animación de START
