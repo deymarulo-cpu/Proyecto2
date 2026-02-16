@@ -435,3 +435,16 @@ body::after {
   z-index: 0;
 }
 
+#pantallaCorazon h2 {
+  font-size: 32px;
+  text-shadow:
+    0 0 10px #ff66cc,
+    0 0 20px #ff33aa,
+    0 0 40px #ff00aa;
+  animation: brilloAmor 2s infinite alternate;
+}
+
+@keyframes brilloAmor {
+  from { transform: scale(1); }
+  to { transform: scale(1.08); }
+}
