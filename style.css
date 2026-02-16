@@ -1,4 +1,6 @@
+/* ============================= */
 /* RESET */
+/* ============================= */
 * {
   margin: 0;
   padding: 0;
@@ -148,37 +150,39 @@ html, body {
 /* ============================= */
 .lotos {
   position: absolute;
-  bottom: 5%;           /* posición desde el suelo */
+  bottom: 5%;               /* desde el piso */
   left: 50%;
   transform: translateX(-50%);
   display: flex;
   justify-content: center;
   align-items: flex-end;
-  gap: 10px;            /* más cercanas */
+  gap: 5px;                  /* más cercanas */
   pointer-events: none;
   z-index: 5;
 }
 
 .loto {
   opacity: 0;
-  transform: scale(0) translateY(50px) rotate(-20deg); /* empieza desde abajo */
+  transform: scale(0) translateY(50px) rotate(-20deg);
   filter: drop-shadow(0 0 12px #ff66cc);
   transition: transform 3s ease, opacity 3s ease, filter 3s ease;
 }
 
-/* Florecer */
+/* Florecer desde el piso */
 .loto.florecer {
   opacity: 1;
   transform: scale(1) translateY(0) rotate(0deg);
   filter: drop-shadow(0 0 25px #ff66cc) drop-shadow(0 0 35px #ff00aa);
 }
 
-/* Tamaños y posiciones */
+/* Tamaños y posición */
 .loto-izq { width: 280px; }                     /* izquierda */
-.loto-der1 { width: 280px; transform: scaleX(-1); } /* derecha invertida */
-.loto-der2 { width: 450px; transform: scaleX(-1); } /* centro invertida 2.5x tamaño original */
+.loto-centro { width: 450px; transform: scaleX(-1); } /* centro más grande e invertida */
+.loto-der { width: 280px; transform: scaleX(-1); }    /* derecha invertida */
 
-/* Animaciones */
+/* ============================= */
+/* ANIMACIONES FLORES */
+/* ============================= */
 @keyframes florecer {
   0% {
     opacity: 0;
