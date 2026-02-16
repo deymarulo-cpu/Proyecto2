@@ -1,24 +1,32 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Juguemos un juego Mi Amor</title>
-<link rel="icon" href="corazon.png" type="image/png">
-<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Juguemos un juego Mi Amor</title>
+  <link rel="icon" href="corazon.png" type="image/png">
+
+  <!-- Fuente retro -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
   <!-- Fondo estrellas -->
   <div class="stars"></div>
 
-  <!-- Flores de loto -->
+  <!-- Flores de loto centradas inferior -->
   <div class="lotos">
     <img src="https://raw.githubusercontent.com/deymarulo-cpu/Proyecto2/refs/heads/main/loto2.png" class="loto loto-izq">
     <img src="https://raw.githubusercontent.com/deymarulo-cpu/Proyecto2/refs/heads/main/loto.png" class="loto loto-der2">
     <img src="https://raw.githubusercontent.com/deymarulo-cpu/Proyecto2/refs/heads/main/loto2.png" class="loto loto-der1">
   </div>
+
+  <!-- Transición pixel -->
+  <div class="pixel-transition"></div>
 
   <!-- Pantalla Inicio -->
   <div class="inicio" id="inicio">
@@ -30,7 +38,11 @@
 
   <!-- Pantalla Principal -->
   <div class="pantalla" id="pantallaPrincipal">
-    <h2>Todo comenzó<br>sin que me<br>diera cuenta...</h2>
+    <h2 id="bienvenida">
+      Todo comenzo<br>
+      sin que me<br>
+      diera cuenta...
+    </h2>
     <button id="botonContinuarPrincipal" class="boton-derecha">CONTINUAR</button>
   </div>
 
@@ -41,18 +53,22 @@
       <div class="carta" data-mensaje="💥 Esa noche fuimos ácido nítrico y sulfúrico y ese beso fue dinamita.">Carta 1</div>
       <div class="carta" data-mensaje="🖖 Nuestro lado friki mi linda Señorita Estrella.">Carta 2</div>
     </div>
+
     <div id="mensajeCarta" class="mensaje-carta" style="display:none;"></div>
+
     <button id="botonContinuarCartas" class="boton-inferior-derecha">CONTINUAR</button>
   </div>
 
   <!-- Pantalla romántica -->
   <div class="pantalla" id="pantallaRomantica" style="display:none;">
     <h2 id="tituloRomantico">💖 TE ESTÁ GUSTANDO MI LEYLEY 💖</h2>
+
     <div class="cuadro-rosa">
       <p id="textoRomantico">
         PARA MI AMOR: Espero que te guste este detallito, sabes mi Leyley a estas alturas solo puedo confesar que mi corazón es más tuyo que mío, porque este corazón te adora y cada latido suyo es por ti, sabes creo que nuestra historia de amor comienza con dos personas que ni soñaban con conocerse, terminan encontrándose, en el instante menos esperado, pero en el momento indicado, lo nuestro no fue un amor a primera vista pero es uno que quiero construir contigo y mostrar que nuestra historia de amor que comenzó en un suspiro del tiempo es mejor que cualquiera. Solo recordando un poco recuerdo que cada confesión que te hacía no salía correctamente y bueno solo para finalizar queda la única y última pregunta...
       </p>
     </div>
+
     <button id="botonContinuarRomantica" class="boton-inferior-derecha">CONTINUAR</button>
   </div>
 
@@ -60,8 +76,8 @@
   <div class="pantalla" id="pantallaFinal" style="display:none;">
     <h2>❓ ¿Quieres ser mi novia Leyley? ❓</h2>
     <div class="final-buttons">
-      <button id="botonSi">SI ❤️</button>
-      <button id="botonNo">NO 💔</button>
+      <button id="botonSi" class="boton-derecha">SI ❤️</button>
+      <button id="botonNo" class="boton-derecha">NO 💔</button>
     </div>
   </div>
 
