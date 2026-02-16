@@ -8,22 +8,24 @@ function iniciarTodo() {
     const botonPrincipal = document.getElementById("botonContinuarPrincipal");
     const florCentral = document.querySelector(".loto-der2");
 
-    // CLICK primer CONTINUAR: Principal -> Cartas
+    // CLICK primer CONTINUAR
     botonPrincipal.addEventListener("click", () => {
+
+      // desaparecer flor central
       if (florCentral) {
         florCentral.style.transition = "opacity 0.8s, transform 0.8s";
         florCentral.style.opacity = 0;
         florCentral.style.transform = "scale(0)";
       }
 
-      // Mover boton CONTINUAR a la posición de la flor
+      // mover boton CONTINUAR a la posicion de la flor
       const rectFlor = florCentral.getBoundingClientRect();
       botonPrincipal.style.position = "absolute";
       botonPrincipal.style.top = rectFlor.top + "px";
       botonPrincipal.style.left = rectFlor.left + "px";
       botonPrincipal.style.transform = "translate(0,0)";
 
-      // Transición a pantalla Cartas
+      // pasar a pantalla de cartas
       setTimeout(() => {
         const pantallaActual = document.getElementById("pantallaPrincipal");
         pantallaActual.style.transition = "opacity 0.8s";
@@ -40,9 +42,10 @@ function iniciarTodo() {
       }, 500);
     });
 
-    // CARTAS: mostrar mensaje al hacer click
+    // CARTAS: mostrar mensaje en cuadro
     const cartas = document.querySelectorAll("#pantallaCartas .carta");
     const mensajeCarta = document.getElementById("mensajeCarta");
+
     cartas.forEach(carta => {
       carta.addEventListener("click", () => {
         mensajeCarta.innerHTML = carta.dataset.mensaje;
@@ -50,7 +53,7 @@ function iniciarTodo() {
       });
     });
 
-    // CONTINUAR Cartas -> Pantalla Romántica
+    // CONTINUAR cartas -> romántica
     const botonCartas = document.getElementById("botonContinuarCartas");
     botonCartas.addEventListener("click", () => {
       const pantallaCartas = document.getElementById("pantallaCartas");
@@ -66,11 +69,10 @@ function iniciarTodo() {
       }, 800);
     });
 
-    // CONTINUAR Romántica -> Pantalla Final
+    // CONTINUAR romántica -> pantalla final
     const botonRomantica = document.getElementById("botonContinuarRomantica");
     botonRomantica.addEventListener("click", () => {
       // Hacer desaparecer SOLO la flor central
-      const florCentral = document.querySelector(".loto-der2");
       if (florCentral) {
         florCentral.style.transition = "opacity 0.8s, transform 0.8s";
         florCentral.style.opacity = 0;
@@ -92,14 +94,16 @@ function iniciarTodo() {
       }, 800);
     });
 
-    // Pantalla Final: SI -> TikTok / NO -> GAME OVER
+    // Pantalla final: SI -> TikTok / NO -> GAME OVER
     document.getElementById("botonSi").addEventListener("click", () => {
       window.location.href = "https://vt.tiktok.com/ZSmkXQ9mE/";
     });
 
     document.getElementById("botonNo").addEventListener("click", () => {
-      document.getElementById("pantallaFinal").style.display = "none";
-      document.getElementById("pantallaGameOver").style.display = "flex";
+      const pantallaFinal = document.getElementById("pantallaFinal");
+      pantallaFinal.style.display = "none";
+      const pantallaGameOver = document.getElementById("pantallaGameOver");
+      pantallaGameOver.style.display = "flex";
     });
 
   }, 1500);
@@ -156,9 +160,6 @@ function animarTexto() {
       }, delayTotal + idxLetra * 100);
     });
     delayTotal += linea.length * 100 + 300;
-    if (idxLinea < lineas.length - 1) {
-      const br = document.createElement("br");
-      h2.appendChild(br);
-    }
+    if (idxLinea < lineas.length - 1) { const br = document.createElement("br"); h2.appendChild(br);}
   });
 }
