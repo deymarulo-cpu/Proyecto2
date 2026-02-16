@@ -164,3 +164,29 @@ function animarTexto() {
     if (idxLinea < lineas.length - 1) { const br = document.createElement("br"); h2.appendChild(br);}
   });
 }
+// CONTINUAR romántica -> pantalla final
+const botonRomantica = document.getElementById("botonContinuarRomantica");
+botonRomantica.addEventListener("click", () => {
+  // Hacer desaparecer SOLO la flor central
+  const florCentral = document.querySelector(".loto-der2");
+  if (florCentral) {
+    florCentral.style.transition = "opacity 0.8s, transform 0.8s";
+    florCentral.style.opacity = 0;
+    florCentral.style.transform = "scale(0) translateY(50px)";
+  }
+
+  // Desaparecer pantalla romántica y mostrar final
+  const pantallaRomantica = document.getElementById("pantallaRomantica");
+  pantallaRomantica.style.transition = "opacity 0.8s";
+  pantallaRomantica.style.opacity = 0;
+
+  setTimeout(() => {
+    pantallaRomantica.style.display = "none";
+    const pantallaFinal = document.getElementById("pantallaFinal");
+    pantallaFinal.style.display = "flex";
+    pantallaFinal.style.opacity = 0;
+    pantallaFinal.style.transition = "opacity 0.8s";
+    setTimeout(() => { pantallaFinal.style.opacity = 1; }, 50);
+  }, 800);
+});
+
