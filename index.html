@@ -36,23 +36,47 @@
     </div>
   </div>
 
-  <!-- Contenido Principal -->
+  <!-- Pantalla Principal -->
   <div class="pantalla" id="pantallaPrincipal">
     <h2 id="bienvenida">
       Todo comenzo<br>
       sin que me<br>
       diera cuenta...
     </h2>
-    <!-- BOTÓN PARA PASAR A LA SIGUIENTE PANTALLA -->
-    <button id="botonContinuar">CONTINUAR</button>
+    <button id="botonContinuarPrincipal" class="boton-derecha">CONTINUAR</button>
   </div>
 
-  <!-- Segunda pantalla: cartas -->
+  <!-- Pantalla de cartas -->
   <div class="pantalla" id="pantallaCartas" style="display:none;">
+    <h2>TIENES CORREO</h2>
     <div class="cartas-container">
-      <div class="carta">Carta 1</div>
-      <div class="carta">Carta 2</div>
+      <div class="carta" data-mensaje="Esa noche fuimos acido nitrico y sulfurico y ese beso fue dinamita.">Carta 1</div>
+      <div class="carta" data-mensaje="Nuestro lado friki mi linda Señorita Estrella.">Carta 2</div>
     </div>
+    <button id="botonContinuarCartas" class="boton-inferior-derecha">CONTINUAR</button>
+  </div>
+
+  <!-- Pantalla romántica -->
+  <div class="pantalla" id="pantallaRomantica" style="display:none;">
+    <h2>TE ESTÁ GUSTANDO MI LEYLEY</h2>
+    <p class="nota">
+      PARA MI AMOR: Espero que te guste este detallito, sabes mi Leyley a estas alturas solo puedo confesar que mi corazon es mas tuyo que mio, porque este corazon te adora y cada latido suyo es por ti, sabes creo que nuestra historia de amor comienza con dos personas que ni soñaban con conocerce, terminan encontrandose, en el instante menos esperado, pero en el momento indicado, lo nuestro no fue un amor a primera vista pero es uno que quiero construir contigo y mostrar que nuestra historia de amor que comenzo en un suspiro del tiempo es mejor que cualquiera. Solo recordando un poco recuerdo que cada confesion que te hacia no salia correctamente y bueno solo para finalizar queda la unica y ultima pregunta...
+    </p>
+    <button id="botonContinuarRomantica" class="boton-inferior-derecha">CONTINUAR</button>
+  </div>
+
+  <!-- Pantalla final -->
+  <div class="pantalla" id="pantallaFinal" style="display:none; flex-direction: column; justify-content:center; align-items:center; text-align:center;">
+    <h2>¿Quieres ser mi novia Leyley?</h2>
+    <div class="final-buttons">
+      <button id="botonSi">SI</button>
+      <button id="botonNo">NO</button>
+    </div>
+  </div>
+
+  <!-- GAME OVER -->
+  <div class="pantalla" id="pantallaGameOver" style="display:none; flex-direction: column; justify-content:center; align-items:center; text-align:center;">
+    <h2>GAME OVER</h2>
   </div>
 
   <script src="script.js"></script>
