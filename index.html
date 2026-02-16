@@ -32,14 +32,14 @@
   <div class="inicio" id="inicio">
     <div class="cuadro-start">
       <h1>✨ COMENZAMOS LEYLEY? ✨</h1>
-      <button onclick="iniciarTodo()">START</button>
+      <button id="btnStart">START</button>
     </div>
   </div>
 
   <!-- Pantalla Principal -->
   <div class="pantalla" id="pantallaPrincipal">
     <h2 id="bienvenida">
-      Todo comenzo<br>
+      Todo comenzó<br>
       sin que me<br>
       diera cuenta...
     </h2>
@@ -47,33 +47,29 @@
   </div>
 
   <!-- Pantalla de cartas -->
-  <div class="pantalla" id="pantallaCartas" style="display:none;">
+  <div class="pantalla" id="pantallaCartas">
     <h2>📧 TIENES CORREO 📧</h2>
     <div class="cartas-container">
       <div class="carta" data-mensaje="💥 Esa noche fuimos ácido nítrico y sulfúrico y ese beso fue dinamita.">Carta 1</div>
       <div class="carta" data-mensaje="🖖 Nuestro lado friki mi linda Señorita Estrella.">Carta 2</div>
     </div>
-
-    <div id="mensajeCarta" class="mensaje-carta" style="display:none;"></div>
-
+    <div id="mensajeCarta" class="mensaje-carta"></div>
     <button id="botonContinuarCartas" class="boton-inferior-derecha">CONTINUAR</button>
   </div>
 
   <!-- Pantalla romántica -->
-  <div class="pantalla" id="pantallaRomantica" style="display:none;">
+  <div class="pantalla" id="pantallaRomantica">
     <h2 id="tituloRomantico">💖 TE ESTÁ GUSTANDO MI LEYLEY 💖</h2>
-
     <div class="cuadro-rosa">
       <p id="textoRomantico">
-        PARA MI AMOR: Espero que te guste este detallito, sabes mi Leyley a estas alturas solo puedo confesar que mi corazón es más tuyo que mío, porque este corazón te adora y cada latido suyo es por ti, sabes creo que nuestra historia de amor comienza con dos personas que ni soñaban con conocerse, terminan encontrándose, en el instante menos esperado, pero en el momento indicado, lo nuestro no fue un amor a primera vista pero es uno que quiero construir contigo y mostrar que nuestra historia de amor que comenzó en un suspiro del tiempo es mejor que cualquiera. Solo recordando un poco recuerdo que cada confesión que te hacía no salía correctamente y bueno solo para finalizar queda la única y última pregunta...
+        PARA MI AMOR: Espero que te guste este detallito, sabes mi Leyley a estas alturas solo puedo confesar que mi corazón es más tuyo que mío...
       </p>
     </div>
-
     <button id="botonContinuarRomantica" class="boton-inferior-derecha">CONTINUAR</button>
   </div>
 
   <!-- Pantalla final -->
-  <div class="pantalla" id="pantallaFinal" style="display:none;">
+  <div class="pantalla" id="pantallaFinal">
     <h2>❓ ¿Quieres ser mi novia Leyley? ❓</h2>
     <div class="final-buttons">
       <button id="botonSi" class="boton-derecha">SI ❤️</button>
@@ -82,7 +78,7 @@
   </div>
 
   <!-- GAME OVER -->
-  <div class="pantalla" id="pantallaGameOver" style="display:none;">
+  <div class="pantalla" id="pantallaGameOver">
     <h2>GAME OVER 💀</h2>
   </div>
 
