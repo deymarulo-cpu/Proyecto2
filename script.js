@@ -196,3 +196,30 @@ function animarTexto() {
     if (idxLinea < lineas.length - 1) { const br = document.createElement("br"); h2.appendChild(br);}
   });
 }
+
+// ===== CORAZONES EXTRA EN PANTALLA CORAZÓN =====
+function crearCorazonesRomanticos() {
+  const pantallaCorazon = document.getElementById("pantallaCorazon");
+
+  setInterval(() => {
+    const corazon = document.createElement("div");
+    corazon.classList.add("corazon-flotante");
+
+    corazon.style.left = Math.random() * 100 + "vw";
+    corazon.style.animationDuration = (3 + Math.random() * 3) + "s";
+
+    pantallaCorazon.appendChild(corazon);
+
+    setTimeout(() => {
+      corazon.remove();
+    }, 6000);
+
+  }, 500);
+}
+
+// Activar cuando aparezca pantalla corazón
+document.getElementById("botonSi").addEventListener("click", () => {
+  setTimeout(() => {
+    crearCorazonesRomanticos();
+  }, 500);
+});
