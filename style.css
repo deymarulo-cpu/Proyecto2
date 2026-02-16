@@ -173,3 +173,10 @@ html, body {
   50% { transform: rotate(3deg); }
   100% { transform: rotate(-3deg); }
 }
+
+.pantalla h2 {
+  text-align: center;        /* Centrado */
+  line-height: 2.5;          /* Espacio entre líneas */
+  margin: 0 20px;            /* Márgenes laterales */
+  font-size: 24px;           /* Tamaño de letra */
+}
