@@ -1,3 +1,4 @@
+// ===== INICIAR TODO =====
 function iniciarTodo() {
   startGame();
 
@@ -5,9 +6,34 @@ function iniciarTodo() {
   setTimeout(() => {
     florecerLotos();
     animarTexto();
+
+    // ===== CLICK EN LA FLOR CENTRAL =====
+    const florCentral = document.querySelector(".loto-der2");
+    florCentral.style.cursor = "pointer"; // indicar que se puede clicar
+
+    florCentral.addEventListener("click", () => {
+      const pantallaActual = document.getElementById("pantallaPrincipal");
+      pantallaActual.style.transition = "opacity 0.8s";
+      pantallaActual.style.opacity = 0;
+
+      setTimeout(() => {
+        pantallaActual.style.display = "none";
+
+        const pantallaCartas = document.getElementById("pantallaCartas");
+        pantallaCartas.style.display = "flex";
+        pantallaCartas.style.opacity = 0;
+        pantallaCartas.style.transition = "opacity 0.8s";
+
+        setTimeout(() => {
+          pantallaCartas.style.opacity = 1;
+        }, 50);
+      }, 800);
+    });
+
   }, 1200);
 }
 
+// ===== TRANSICIÓN PIXEL =====
 function startGame() {
   const transition = document.querySelector(".pixel-transition");
   transition.innerHTML = "";
@@ -29,6 +55,7 @@ function startGame() {
   }, 1200);
 }
 
+// ===== FLORECER LOTOS =====
 function florecerLotos() {
   const lotos = document.querySelectorAll('.loto');
   lotos.forEach((loto, index) => {
@@ -38,6 +65,7 @@ function florecerLotos() {
   });
 }
 
+// ===== ANIMACIÓN DE TEXTO LÍNEA POR LÍNEA =====
 function animarTexto() {
   const h2 = document.getElementById("bienvenida");
   if (!h2) return;
@@ -77,26 +105,3 @@ function animarTexto() {
     }
   });
 }
-// Detectar click en flor central
-const florCentral = document.querySelector(".loto-der2");
-
-florCentral.addEventListener("click", () => {
-  // Efecto de transición (fade out pantalla actual)
-  const pantallaActual = document.getElementById("pantallaPrincipal");
-  pantallaActual.style.transition = "opacity 0.8s";
-  pantallaActual.style.opacity = 0;
-
-  setTimeout(() => {
-    pantallaActual.style.display = "none";
-
-    // Mostrar pantalla de cartas
-    const pantallaCartas = document.getElementById("pantallaCartas");
-    pantallaCartas.style.display = "flex";
-    pantallaCartas.style.opacity = 0;
-    pantallaCartas.style.transition = "opacity 0.8s";
-    setTimeout(() => {
-      pantallaCartas.style.opacity = 1;
-    }, 50);
-  }, 800);
-});
-
