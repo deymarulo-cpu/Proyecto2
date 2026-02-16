@@ -1,76 +1,156 @@
-document.getElementById("btnStart").addEventListener("click", iniciarTodo);
+function iniciarTodo() {
+  startGame();
 
-function iniciarTodo(){
-  ocultarPantalla("inicio");
-  mostrarPantalla("pantallaPrincipal");
-  florecerLotos();
-  animarTexto("bienvenida");
+  setTimeout(() => {
+    florecerLotos();
+    animarTexto();
 
-  // Continuar principal -> cartas
-  document.getElementById("botonContinuarPrincipal").onclick = () => {
-    document.querySelectorAll('.loto').forEach(f=>f.style.opacity=0);
-    ocultarPantalla("pantallaPrincipal");
-    mostrarPantalla("pantallaCartas");
-  };
+    const botonPrincipal = document.getElementById("botonContinuarPrincipal");
+    const florCentral = document.querySelector(".loto-der2");
 
-  // Animación cartas
-  document.querySelectorAll("#pantallaCartas .carta").forEach(carta=>{
-    carta.onclick = ()=>{
-      const mensaje=document.getElementById("mensajeCarta");
-      mensaje.innerHTML=carta.dataset.mensaje;
-      mensaje.style.display="block";
-      setTimeout(()=>mensaje.style.opacity=1,50);
-    };
+    // CLICK primer CONTINUAR
+    botonPrincipal.addEventListener("click", () => {
+
+      // desaparecer flor central
+      if (florCentral) {
+        florCentral.style.transition = "opacity 0.8s, transform 0.8s";
+        florCentral.style.opacity = 0;
+        florCentral.style.transform = "scale(0)";
+      }
+
+      // mover boton CONTINUAR a la posicion de la flor
+      const rectFlor = florCentral.getBoundingClientRect();
+      botonPrincipal.style.position = "absolute";
+      botonPrincipal.style.top = rectFlor.top + "px";
+      botonPrincipal.style.left = rectFlor.left + "px";
+      botonPrincipal.style.transform = "translate(0,0)";
+
+      // pasar a pantalla de cartas
+      setTimeout(() => {
+        const pantallaActual = document.getElementById("pantallaPrincipal");
+        pantallaActual.style.transition = "opacity 0.8s";
+        pantallaActual.style.opacity = 0;
+
+        setTimeout(() => {
+          pantallaActual.style.display = "none";
+          const pantallaCartas = document.getElementById("pantallaCartas");
+          pantallaCartas.style.display = "flex";
+          pantallaCartas.style.opacity = 0;
+          pantallaCartas.style.transition = "opacity 0.8s";
+          setTimeout(() => { pantallaCartas.style.opacity = 1; }, 50);
+        }, 800);
+      }, 500);
+    });
+
+    // CARTAS: mostrar mensaje en cuadro
+    const cartas = document.querySelectorAll("#pantallaCartas .carta");
+    const mensajeCarta = document.getElementById("mensajeCarta");
+
+    cartas.forEach(carta => {
+      carta.addEventListener("click", () => {
+        mensajeCarta.innerHTML = carta.dataset.mensaje;
+        mensajeCarta.style.display = "block";
+      });
+    });
+
+    // CONTINUAR cartas -> romántica
+    const botonCartas = document.getElementById("botonContinuarCartas");
+    botonCartas.addEventListener("click", () => {
+      const pantallaCartas = document.getElementById("pantallaCartas");
+      pantallaCartas.style.transition = "opacity 0.8s";
+      pantallaCartas.style.opacity = 0;
+      setTimeout(() => {
+        pantallaCartas.style.display = "none";
+        const pantallaRomantica = document.getElementById("pantallaRomantica");
+        pantallaRomantica.style.display = "flex";
+        pantallaRomantica.style.opacity = 0;
+        pantallaRomantica.style.transition = "opacity 0.8s";
+        setTimeout(() => { pantallaRomantica.style.opacity = 1; }, 50);
+      }, 800);
+    });
+
+    // CONTINUAR romántica -> pantalla final
+    const botonRomantica = document.getElementById("botonContinuarRomantica");
+    botonRomantica.addEventListener("click", () => {
+      const pantallaRomantica = document.getElementById("pantallaRomantica");
+      pantallaRomantica.style.transition = "opacity 0.8s";
+      pantallaRomantica.style.opacity = 0;
+      setTimeout(() => {
+        pantallaRomantica.style.display = "none";
+        const pantallaFinal = document.getElementById("pantallaFinal");
+        pantallaFinal.style.display = "flex";
+        pantallaFinal.style.opacity = 0;
+        pantallaFinal.style.transition = "opacity 0.8s";
+        setTimeout(() => { pantallaFinal.style.opacity = 1; }, 50);
+      }, 800);
+    });
+
+    // Pantalla final: SI -> TikTok / NO -> GAME OVER
+    document.getElementById("botonSi").addEventListener("click", () => {
+      window.location.href = "https://vt.tiktok.com/ZSmkXQ9mE/";
+    });
+
+    document.getElementById("botonNo").addEventListener("click", () => {
+      const pantallaFinal = document.getElementById("pantallaFinal");
+      pantallaFinal.style.display = "none";
+      const pantallaGameOver = document.getElementById("pantallaGameOver");
+      pantallaGameOver.style.display = "flex";
+    });
+
+  }, 1500);
+}
+
+// TRANSICIÓN PIXEL
+function startGame() {
+  const transition = document.querySelector(".pixel-transition");
+  transition.innerHTML = "";
+  for (let i = 0; i < 400; i++) {
+    const pixel = document.createElement("div");
+    pixel.classList.add("pixel");
+    transition.appendChild(pixel);
+    setTimeout(() => { pixel.style.transform = "scale(1)"; }, Math.random() * 500);
+  }
+
+  setTimeout(() => {
+    document.querySelector(".inicio").style.display = "none";
+    document.getElementById("pantallaPrincipal").style.display = "block";
+    transition.innerHTML = "";
+  }, 1200);
+}
+
+// FLORECER LOTOS
+function florecerLotos() {
+  const lotos = document.querySelectorAll('.loto');
+  lotos.forEach((loto, index) => {
+    setTimeout(() => { loto.classList.add('florecer'); }, index * 500);
   });
+}
 
-  // Continuar cartas -> romántica
-  document.getElementById("botonContinuarCartas").onclick = ()=>{
-    ocultarPantalla("pantallaCartas");
-    mostrarPantalla("pantallaRomantica",()=>{
-      document.getElementById("tituloRomantico").style.opacity=1;
-      animarTexto("textoRomantico");
-      document.querySelector(".cuadro-rosa").style.opacity=1;
+// ANIMACIÓN DE TEXTO
+function animarTexto() {
+  const h2 = document.getElementById("bienvenida");
+  if (!h2) return;
+  const lineas = h2.innerHTML.split("<br>");
+  h2.innerHTML = "";
+  let delayTotal = 0;
+  lineas.forEach((linea, idxLinea) => {
+    const lineContainer = document.createElement("div");
+    lineContainer.style.display = "block";
+    h2.appendChild(lineContainer);
+    linea.split("").forEach((letra, idxLetra) => {
+      const span = document.createElement("span");
+      span.innerHTML = letra === " " ? "&nbsp;" : letra;
+      span.style.display = "inline-block";
+      span.style.opacity = 0;
+      span.style.transition = "opacity 0.3s ease, transform 0.3s ease";
+      lineContainer.appendChild(span);
+      setTimeout(() => {
+        span.style.opacity = 1;
+        span.style.transform = "translateY(-5px)";
+        setTimeout(() => { span.style.transform = "translateY(0)"; }, 300);
+      }, delayTotal + idxLetra * 100);
     });
-  };
-
-  // Continuar romántica -> final
-  document.getElementById("botonContinuarRomantica").onclick = ()=>{
-    ocultarPantalla("pantallaRomantica");
-    mostrarPantalla("pantallaFinal",()=>{
-      const botones=document.querySelector(".final-buttons");
-      botones.style.opacity=1;
-      botones.style.transform="translateY(0)";
-    });
-  };
-
-  document.getElementById("botonSi").onclick = ()=> window.location.href="https://vt.tiktok.com/ZSmkXQ9mE/";
-  document.getElementById("botonNo").onclick = ()=>{
-    ocultarPantalla("pantallaFinal");
-    mostrarPantalla("pantallaGameOver");
-  };
-}
-
-// FUNCIONES UTILES
-function ocultarPantalla(id){ document.getElementById(id).style.display="none"; }
-function mostrarPantalla(id,callback){
-  const p=document.getElementById(id);
-  p.style.display="flex";
-  p.style.opacity=0;
-  setTimeout(()=>{p.style.opacity=1; if(callback)callback();},50);
-}
-
-function florecerLotos(){
-  document.querySelectorAll(".loto").forEach((l,i)=>setTimeout(()=>l.classList.add("florecer"), i*300));
-}
-
-function animarTexto(id){
-  const t=document.getElementById(id);
-  const letras=t.innerText.split("");
-  t.innerHTML="";
-  letras.forEach((l,i)=>{
-    const span=document.createElement("span");
-    span.innerHTML=l===" "?"&nbsp;":l;
-    t.appendChild(span);
-    setTimeout(()=>{span.style.opacity=1; span.style.transform="translateY(0)";}, i*50);
+    delayTotal += linea.length * 100 + 300;
+    if (idxLinea < lineas.length - 1) { const br = document.createElement("br"); h2.appendChild(br);}
   });
 }
