@@ -1,9 +1,3 @@
-// ===== AUDIOS =====
-const song1 = new Audio("audios/song1.mp3"); // START
-const song2 = new Audio("audios/song2.mp3"); // carta 1
-const song3 = new Audio("audios/song3.mp3"); // carta 2
-const song4 = new Audio("audios/song4.mp3"); // boton SI
-
 function iniciarTodo() {
   startGame(() => { // callback al terminar la animación de START
     florecerLotos();
@@ -13,14 +7,10 @@ function iniciarTodo() {
     const florCentral = document.querySelector(".loto-der2");
     const florIzq = document.querySelector(".loto-izq");
     const florDer = document.querySelector(".loto-der1");
-    const mensajeCarta = document.getElementById("mensajeCarta");
 
-    // ===== BOTÓN START =====
+    // ===== PRIMER CONTINUAR =====
     botonPrincipal.addEventListener("click", () => {
-      song1.currentTime = 0;
-      song1.play(); // Reproduce audio START
-
-      // Desaparece la flor central
+      // Desaparece solo la flor central
       if (florCentral) {
         florCentral.style.transition = "opacity 0.8s, transform 0.8s";
         florCentral.style.opacity = 0;
@@ -43,26 +33,24 @@ function iniciarTodo() {
         }, 800);
       }, 500);
     });
+// ===== MOSTRAR MENSAJE CARTA =====
+const cartas = document.querySelectorAll("#pantallaCartas .carta");
+const mensajeCarta = document.getElementById("mensajeCarta");
 
-    // ===== MENSAJE CARTAS =====
-    const cartas = document.querySelectorAll("#pantallaCartas .carta");
-    cartas.forEach(carta => {
-      carta.addEventListener("click", () => {
-        const index = carta.dataset.index; // "1" o "2"
-        if (index === "1") { song2.currentTime = 0; song2.play(); }
-        if (index === "2") { song3.currentTime = 0; song3.play(); }
-
-        mensajeCarta.innerHTML = carta.dataset.mensaje;
-        mensajeCarta.style.display = "block";
-        mensajeCarta.style.opacity = 0;
-        mensajeCarta.style.transition = "opacity 0.5s";
-        setTimeout(() => { mensajeCarta.style.opacity = 1; }, 50);
-      });
-    });
+cartas.forEach(carta => {
+  carta.addEventListener("click", () => {
+    mensajeCarta.innerHTML = carta.dataset.mensaje;
+    mensajeCarta.style.display = "block";
+    mensajeCarta.style.opacity = 0;
+    mensajeCarta.style.transition = "opacity 0.5s";
+    setTimeout(() => { mensajeCarta.style.opacity = 1; }, 50);
+  });
+});
 
     // ===== CONTINUAR CARTAS =====
     const botonCartas = document.getElementById("botonContinuarCartas");
     botonCartas.addEventListener("click", () => {
+      // Desaparecen las flores de los lados
       [florIzq, florDer].forEach(flor => {
         if (flor) {
           flor.style.transition = "opacity 0.8s, transform 0.8s";
@@ -71,6 +59,7 @@ function iniciarTodo() {
         }
       });
 
+      // Transición a pantalla romántica
       const pantallaCartas = document.getElementById("pantallaCartas");
       pantallaCartas.style.transition = "opacity 0.8s";
       pantallaCartas.style.opacity = 0;
@@ -98,50 +87,16 @@ function iniciarTodo() {
         pantallaFinal.style.display = "flex";
         pantallaFinal.style.opacity = 0;
         pantallaFinal.style.transition = "opacity 0.8s";
-        setTimeout(() => { 
-          pantallaFinal.style.opacity = 1;
-
-          // ===== EFECTOS ROMÁNTICOS =====
-          for (let i = 0; i < 12; i++) {
-            const corazon = document.createElement("div");
-            corazon.classList.add("corazon-flotante");
-            corazon.style.left = Math.random() * 90 + "vw";
-            corazon.style.animationDuration = 3 + Math.random() * 4 + "s";
-            pantallaFinal.appendChild(corazon);
-          }
-
-          for (let i = 0; i < 40; i++) {
-            const p = document.createElement("div");
-            p.classList.add("particula");
-            p.style.left = Math.random() * 100 + "vw";
-            p.style.animationDuration = 4 + Math.random() * 3 + "s";
-            pantallaFinal.appendChild(p);
-          }
-
-        }, 50);
+        setTimeout(() => { pantallaFinal.style.opacity = 1; }, 50);
       }, 800);
     });
 
     // ===== PANTALLA FINAL: SI/NO =====
     document.getElementById("botonSi").addEventListener("click", () => {
-      song4.currentTime = 0;
-      song4.play(); // Reproduce audio botón SI
-
-      const pantallaFinal = document.getElementById("pantallaFinal");
-      pantallaFinal.style.display = "none";
-      const pantallaCorazon = document.getElementById("pantallaCorazon");
-      pantallaCorazon.style.display = "flex";
-
-      for (let i = 0; i < 12; i++) {
-        const corazon = document.createElement("div");
-        corazon.classList.add("corazon-flotante");
-        corazon.style.left = Math.random() * 90 + "vw";
-        corazon.style.animationDuration = 3 + Math.random() * 4 + "s";
-        pantallaCorazon.appendChild(corazon);
-      }
+      window.location.href = "https://vt.tiktok.com/ZSmkXQ9mE/";
     });
 
-    document.getElementById("botonNo").addEventListener("click", () => { 
+    document.getElementById("botonNo").addEventListener("click", () => {
       const pantallaFinal = document.getElementById("pantallaFinal");
       pantallaFinal.style.display = "none";
       const pantallaGameOver = document.getElementById("pantallaGameOver");
@@ -167,7 +122,7 @@ function startGame(callback) {
     document.getElementById("pantallaPrincipal").style.display = "block";
     transition.innerHTML = "";
 
-    if (callback) callback();
+    if (callback) callback(); // <-- aquí se agregan los listeners
   }, 1200);
 }
 
