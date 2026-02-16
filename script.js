@@ -5,17 +5,19 @@ function iniciarTodo() {
     florecerLotos();
     animarTexto();
 
-    // Referencias a botones y flores
-    const botonPrincipal = document.getElementById("botonContinuarPrincipal");
+    // Flores
     const florCentral = document.querySelector(".loto-der2");
     const florIzq = document.querySelector(".loto-izq");
     const florDer1 = document.querySelector(".loto-der1");
+
+    // BOTONES
+    const botonPrincipal = document.getElementById("botonContinuarPrincipal");
     const botonCartas = document.getElementById("botonContinuarCartas");
     const botonRomantica = document.getElementById("botonContinuarRomantica");
 
     // ------------------- PRIMER CONTINUAR -------------------
     botonPrincipal.addEventListener("click", () => {
-      // Desaparece flor central
+      // Desaparece solo la flor central
       if (florCentral) {
         florCentral.style.transition = "opacity 0.8s, transform 0.8s";
         florCentral.style.opacity = 0;
@@ -23,20 +25,18 @@ function iniciarTodo() {
       }
 
       // Transición a pantalla de cartas
-      setTimeout(() => {
-        const pantallaActual = document.getElementById("pantallaPrincipal");
-        pantallaActual.style.transition = "opacity 0.8s";
-        pantallaActual.style.opacity = 0;
+      const pantallaActual = document.getElementById("pantallaPrincipal");
+      pantallaActual.style.transition = "opacity 0.8s";
+      pantallaActual.style.opacity = 0;
 
-        setTimeout(() => {
-          pantallaActual.style.display = "none";
-          const pantallaCartas = document.getElementById("pantallaCartas");
-          pantallaCartas.style.display = "flex";
-          pantallaCartas.style.opacity = 0;
-          pantallaCartas.style.transition = "opacity 0.8s";
-          setTimeout(() => { pantallaCartas.style.opacity = 1; }, 50);
-        }, 800);
-      }, 500);
+      setTimeout(() => {
+        pantallaActual.style.display = "none";
+        const pantallaCartas = document.getElementById("pantallaCartas");
+        pantallaCartas.style.display = "flex";
+        pantallaCartas.style.opacity = 0;
+        pantallaCartas.style.transition = "opacity 0.8s";
+        setTimeout(() => { pantallaCartas.style.opacity = 1; }, 50);
+      }, 800);
     });
 
     // ------------------- PANTALLA CARTAS -------------------
@@ -60,7 +60,6 @@ function iniciarTodo() {
         }
       });
 
-      // Transición a pantalla romántica
       const pantallaCartas = document.getElementById("pantallaCartas");
       pantallaCartas.style.transition = "opacity 0.8s";
       pantallaCartas.style.opacity = 0;
@@ -77,13 +76,6 @@ function iniciarTodo() {
 
     // ------------------- PANTALLA ROMÁNTICA -------------------
     botonRomantica.addEventListener("click", () => {
-      // Opcional: desaparecer la flor central si aún queda
-      if (florCentral) {
-        florCentral.style.transition = "opacity 0.8s, transform 0.8s";
-        florCentral.style.opacity = 0;
-        florCentral.style.transform = "scale(0) translateY(50px)";
-      }
-
       const pantallaRomantica = document.getElementById("pantallaRomantica");
       pantallaRomantica.style.transition = "opacity 0.8s";
       pantallaRomantica.style.opacity = 0;
