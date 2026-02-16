@@ -292,3 +292,39 @@ html, body {
   text-align: center;
   min-height: 100vh;
 }
+/* RESET y fondo estrellado igual que antes ... (mantener todo lo anterior) */
+
+/* ===== CUADRO DE MENSAJE CARTA ===== */
+.mensaje-carta {
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translateX(-50%);
+  max-width: 400px;
+  padding: 20px;
+  border: 3px solid #00f0ff;
+  background-color: #111;
+  color: #00f0ff;
+  text-align: center;
+  font-size: 14px;
+  z-index: 10;
+  border-radius: 10px;
+  box-shadow: 0 0 20px #00f0ff;
+}
+
+/* ===== CUADRO ROSA PANTALLA ROMÁNTICA ===== */
+.cuadro-rosa {
+  position: absolute;
+  top: 50px;
+  left: 50%;
+  transform: translateX(-50%);
+  max-width: 900px;
+  padding: 30px;
+  background-color: rgba(255, 102, 204, 0.8);
+  border-radius: 20px;
+  border: 3px solid #ff66cc;
+  color: black;
+  text-align: left;
+  z-index: 5;
+  box-shadow: 0 0 20px #ff66cc;
+}
