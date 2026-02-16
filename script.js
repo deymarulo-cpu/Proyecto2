@@ -43,19 +43,41 @@ function florecerLotos() {
 
 // ===== ANIMACIÓN DE TEXTO =====
 function animarTexto() {
-  const h2 = document.getElementById("bienvenida");
+  const h2 = document.querySelector("#pantallaPrincipal h2");
   if (!h2) return;
 
-  const texto = h2.textContent;
-  h2.textContent = "";
+  // Guardar las líneas separadas por <br>
+  const lineas = h2.innerHTML.split("<br>");
+  h2.innerHTML = ""; // limpiar contenido para animación
 
-  texto.split("").forEach((letra, index) => {
-    const span = document.createElement("span");
-    span.textContent = letra;
-    h2.appendChild(span);
+  let delayTotal = 0;
 
-    setTimeout(() => {
-      span.style.opacity = 1;
-    }, index * 100);
+  lineas.forEach((linea, idxLinea) => {
+    const lineContainer = document.createElement("div"); // contenedor para cada línea
+    h2.appendChild(lineContainer);
+
+    // animar cada letra de la línea
+    linea.split("").forEach((letra, idxLetra) => {
+      const span = document.createElement("span");
+      span.textContent = letra;
+      span.style.opacity = 0;
+      lineContainer.appendChild(span);
+
+      setTimeout(() => {
+        span.style.opacity = 1;
+      }, delayTotal + idxLetra * 100); // 100ms por letra
+    });
+
+    // sumar tiempo total para la siguiente línea (+100ms por letra)
+    delayTotal += linea.length * 100;
+
+    // agregar un pequeño delay antes de la siguiente línea
+    delayTotal += 300;
+
+    // agregar <br> entre líneas excepto la última
+    if (idxLinea < lineas.length - 1) {
+      const br = document.createElement("br");
+      h2.appendChild(br);
+    }
   });
 }
