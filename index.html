@@ -47,15 +47,19 @@
   </div>
 
   <!-- Pantalla de cartas -->
-  <div class="pantalla" id="pantallaCartas" style="display:none;">
-    <h2>TIENES CORREO</h2>
-    <div class="cartas-container">
-      <div class="carta" data-mensaje="Esa noche fuimos ácido nítrico y sulfúrico y ese beso fue dinamita.">Carta 1</div>
-      <div class="carta" data-mensaje="Nuestro lado friki mi linda Señorita Estrella.">Carta 2</div>
-    </div>
-    <div id="mensajeCarta" class="mensaje-carta" style="display:none;"></div>
-    <button id="botonContinuarCartas" class="boton-inferior-derecha">CONTINUAR</button>
+ <div class="pantalla" id="pantallaCartas" style="display:none;">
+  <h2>TIENES CORREO</h2>
+  <div class="cartas-container">
+    <!-- Carta 1: audio song2 -->
+    <div class="carta" data-index="1" data-mensaje="Esa noche fuimos ácido nítrico y sulfúrico y ese beso fue dinamita.">Carta 1</div>
+    
+    <!-- Carta 2: audio song3 -->
+    <div class="carta" data-index="2" data-mensaje="Nuestro lado friki mi linda Señorita Estrella.">Carta 2</div>
   </div>
+
+  <div id="mensajeCarta" class="mensaje-carta" style="display:none;"></div>
+  <button id="botonContinuarCartas" class="boton-inferior-derecha">CONTINUAR</button>
+</div>
 
   <!-- Pantalla romántica -->
   <div class="pantalla" id="pantallaRomantica" style="display:none; flex-direction: column; justify-content: center; align-items: center; text-align:center;">
