@@ -41,38 +41,39 @@ function florecerLotos() {
   });
 }
 
-// ===== ANIMACIÓN DE TEXTO =====
+// ===== ANIMACIÓN DE TEXTO LÍNEA POR LÍNEA =====
 function animarTexto() {
-  const h2 = document.querySelector("#pantallaPrincipal h2");
+  const h2 = document.getElementById("bienvenida");
   if (!h2) return;
 
-  // Guardar las líneas separadas por <br>
+  // Separar líneas por <br>
   const lineas = h2.innerHTML.split("<br>");
-  h2.innerHTML = ""; // limpiar contenido para animación
+  h2.innerHTML = ""; // limpiar texto
 
   let delayTotal = 0;
 
   lineas.forEach((linea, idxLinea) => {
-    const lineContainer = document.createElement("div"); // contenedor para cada línea
+    const lineContainer = document.createElement("div");
     h2.appendChild(lineContainer);
 
-    // animar cada letra de la línea
+    // Animar cada letra
     linea.split("").forEach((letra, idxLetra) => {
       const span = document.createElement("span");
-      span.textContent = letra;
-      span.style.opacity = 0;
+      span.innerHTML = letra === " " ? "&nbsp;" : letra;
       lineContainer.appendChild(span);
 
       setTimeout(() => {
         span.style.opacity = 1;
-      }, delayTotal + idxLetra * 100); // 100ms por letra
+        // efecto flotante
+        span.style.transform = `translateY(-5px)`;
+        setTimeout(() => {
+          span.style.transform = `translateY(0)`;
+        }, 300);
+      }, delayTotal + idxLetra * 100);
     });
 
-    // sumar tiempo total para la siguiente línea (+100ms por letra)
-    delayTotal += linea.length * 100;
-
-    // agregar un pequeño delay antes de la siguiente línea
-    delayTotal += 300;
+    // tiempo acumulado para la siguiente línea
+    delayTotal += linea.length * 100 + 300;
 
     // agregar <br> entre líneas excepto la última
     if (idxLinea < lineas.length - 1) {
