@@ -33,6 +33,19 @@ function iniciarTodo() {
         }, 800);
       }, 500);
     });
+// ===== MOSTRAR MENSAJE CARTA =====
+const cartas = document.querySelectorAll("#pantallaCartas .carta");
+const mensajeCarta = document.getElementById("mensajeCarta");
+
+cartas.forEach(carta => {
+  carta.addEventListener("click", () => {
+    mensajeCarta.innerHTML = carta.dataset.mensaje;
+    mensajeCarta.style.display = "block";
+    mensajeCarta.style.opacity = 0;
+    mensajeCarta.style.transition = "opacity 0.5s";
+    setTimeout(() => { mensajeCarta.style.opacity = 1; }, 50);
+  });
+});
 
     // ===== CONTINUAR CARTAS =====
     const botonCartas = document.getElementById("botonContinuarCartas");
