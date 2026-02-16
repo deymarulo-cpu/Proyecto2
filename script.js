@@ -1,4 +1,4 @@
-POR FAVOR COMPLETALO EN MI CODIGO: function iniciarTodo() {
+function iniciarTodo() {
   startGame();
 
   setTimeout(() => {
