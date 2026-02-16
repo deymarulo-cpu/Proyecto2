@@ -178,3 +178,38 @@ html, body {
   50% { transform: rotate(3deg); }
   100% { transform: rotate(-3deg); }
 }
+/* Pantalla de cartas centrada */
+#pantallaCartas {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  flex-direction: column;
+  gap: 40px;
+  background-color: #000814; /* mismo fondo */
+  color: white;
+  font-family: 'Press Start 2P', Arial, sans-serif;
+}
+
+.cartas-container {
+  display: flex;
+  gap: 50px;
+}
+
+.carta {
+  width: 150px;
+  height: 220px;
+  background-color: #111;
+  border: 3px solid #00f0ff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
+  cursor: pointer;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.carta:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 20px #00f0ff;
+}
