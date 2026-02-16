@@ -292,7 +292,6 @@ html, body {
   text-align: center;
   min-height: 100vh;
 }
-/* RESET y fondo estrellado igual que antes ... (mantener todo lo anterior) */
 
 /* ===== CUADRO DE MENSAJE CARTA ===== */
 .mensaje-carta {
@@ -310,21 +309,53 @@ html, body {
   z-index: 10;
   border-radius: 10px;
   box-shadow: 0 0 20px #00f0ff;
+  opacity: 0;
+  transition: opacity 0.5s ease;
 }
 
 /* ===== CUADRO ROSA PANTALLA ROMÁNTICA ===== */
 .cuadro-rosa {
   position: absolute;
-  top: 50px;
+  top: 150px;
   left: 50%;
   transform: translateX(-50%);
   max-width: 900px;
   padding: 30px;
-  background-color: rgba(255, 102, 204, 0.8);
   border-radius: 20px;
-  border: 3px solid #ff66cc;
-  color: black;
+  border: 3px solid #ff66cc; /* solo borde neon */
+  background-color: transparent;
+  color: #ff66cc;
   text-align: left;
   z-index: 5;
   box-shadow: 0 0 20px #ff66cc;
+  opacity: 0;
+}
+
+/* Título romántico fuera del cuadro */
+#tituloRomantico {
+  text-align: center;
+  margin-top: 50px;
+  font-size: 28px;
+  color: #ff66cc;
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: all 1s ease;
+}
+
+/* Animación letras cuadro romántico */
+#textoRomantico span {
+  opacity: 0;
+  display: inline-block;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+/* Pantalla final botones centrados */
+.final-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin-top: 20px;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.8s ease;
 }
