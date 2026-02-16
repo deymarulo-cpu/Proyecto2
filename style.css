@@ -387,3 +387,41 @@ html, body {
   background-color: #000814;
   color: white;
 }
+/* ===== CORAZONES FLOTANTES ===== */
+.corazon-flotante {
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  background: radial-gradient(circle, #ff66cc 0%, #ff33aa 70%);
+  clip-path: polygon(
+    50% 0%, 61% 13%, 75% 15%, 87% 23%, 94% 35%, 95% 50%, 
+    87% 65%, 75% 75%, 61% 85%, 50% 95%, 39% 85%, 25% 75%, 
+    13% 65%, 5% 50%, 6% 35%, 13% 23%, 25% 15%, 39% 13%
+  );
+  opacity: 0.8;
+  z-index: 100;
+  animation: flotar 5s infinite linear;
+}
+
+@keyframes flotar {
+  0% { transform: translateY(100vh) rotate(0deg); }
+  50% { transform: translateY(50vh) rotate(180deg); }
+  100% { transform: translateY(-100vh) rotate(360deg); }
+}
+
+/* ===== PARTÍCULAS ROMÁNTICAS ===== */
+.particula {
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  background: #ff66cc;
+  border-radius: 50%;
+  opacity: 0.6;
+  z-index: 99;
+  animation: subir 6s linear infinite;
+}
+
+@keyframes subir {
+  0% { transform: translateY(100vh); opacity: 0.6; }
+  100% { transform: translateY(-10vh); opacity: 0; }
+}
