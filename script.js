@@ -123,7 +123,6 @@ function iniciarTodo() {
       song4.currentTime = 0;
       song4.play();
 
-      window.location.href = "https://vt.tiktok.com/ZSmkXQ9mE/";
     });
 
     document.getElementById("botonNo").addEventListener("click", () => {
