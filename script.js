@@ -18,7 +18,7 @@ function iniciarTodo() {
     // ===== BOTÓN START =====
     botonPrincipal.addEventListener("click", () => {
       song1.currentTime = 0;
-      song1.play();
+      song1.play(); // Reproduce audio START
 
       // Desaparece solo la flor central
       if (florCentral) {
@@ -48,8 +48,8 @@ function iniciarTodo() {
     cartas.forEach(carta => {
       carta.addEventListener("click", () => {
         const index = carta.dataset.index; // "1" o "2"
-        if (index === "1") { song2.currentTime = 0; song2.play(); }
-        if (index === "2") { song3.currentTime = 0; song3.play(); }
+        if (index === "1") { song2.currentTime = 0; song2.play(); } // Reproduce audio carta 1
+        if (index === "2") { song3.currentTime = 0; song3.play(); } // Reproduce audio carta 2
 
         mensajeCarta.innerHTML = carta.dataset.mensaje;
         mensajeCarta.style.display = "block";
@@ -99,22 +99,6 @@ function iniciarTodo() {
         pantallaFinal.style.transition = "opacity 0.8s";
         setTimeout(() => { 
           pantallaFinal.style.opacity = 1;
-
-          // ===== AÑADIR EFECTOS ROMÁNTICOS =====
-          for (let i = 0; i < 12; i++) {
-            const corazon = document.createElement("div");
-            corazon.classList.add("corazon-flotante");
-            corazon.style.left = Math.random() * 90 + "vw";
-            corazon.style.animationDuration = 3 + Math.random() * 4 + "s";
-            pantallaFinal.appendChild(corazon);
-          }
-          for (let i = 0; i < 40; i++) {
-            const p = document.createElement("div");
-            p.classList.add("particula");
-            p.style.left = Math.random() * 100 + "vw";
-            p.style.animationDuration = 4 + Math.random() * 3 + "s";
-            pantallaFinal.appendChild(p);
-          }
         }, 50);
       }, 800);
     });
@@ -122,20 +106,12 @@ function iniciarTodo() {
     // ===== PANTALLA FINAL: SI/NO =====
     document.getElementById("botonSi").addEventListener("click", () => {
       song4.currentTime = 0;
-      song4.play();
+      song4.play(); // Reproduce audio botón SI
 
       const pantallaFinal = document.getElementById("pantallaFinal");
       pantallaFinal.style.display = "none";
       const pantallaCorazon = document.getElementById("pantallaCorazon");
       pantallaCorazon.style.display = "flex";
-
-      for (let i = 0; i < 12; i++) {
-        const corazon = document.createElement("div");
-        corazon.classList.add("corazon-flotante");
-        corazon.style.left = Math.random() * 90 + "vw";
-        corazon.style.animationDuration = 3 + Math.random() * 4 + "s";
-        pantallaCorazon.appendChild(corazon);
-      }
     });
 
     document.getElementById("botonNo").addEventListener("click", () => { 
