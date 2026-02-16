@@ -148,41 +148,50 @@ html, body {
 /* ============================= */
 .lotos {
   position: absolute;
-  bottom: 5%;       /* posición inferior */
+  bottom: 5%;           /* posición desde el suelo */
   left: 50%;
   transform: translateX(-50%);
   display: flex;
   justify-content: center;
   align-items: flex-end;
-  gap: 40px;        /* espacio entre flores */
+  gap: 20px;            /* más juntas */
   pointer-events: none;
   z-index: 5;
 }
 
 .loto {
   opacity: 0;
-  transform: scale(0) rotate(-20deg);
+  transform: scale(0) translateY(50px) rotate(-20deg); /* empieza desde abajo */
   filter: drop-shadow(0 0 12px #ff66cc);
-  transition: transform 3s ease, opacity 3s ease, filter 3s ease; /* animación más lenta */
+  transition: transform 3s ease, opacity 3s ease, filter 3s ease;
 }
 
 /* Florecer */
 .loto.florecer {
   opacity: 1;
-  transform: scale(1) rotate(0deg);
+  transform: scale(1) translateY(0) rotate(0deg);
   filter: drop-shadow(0 0 25px #ff66cc) drop-shadow(0 0 35px #ff00aa);
 }
 
 /* Tamaños y posiciones */
-.loto-izq { width: 140px; }      /* izquierda más pequeña */
-.loto-der1 { width: 140px; transform: scaleX(-1); } /* derecha invertida */
-.loto-der2 { width: 180px; }     /* centro más grande */
+.loto-izq { width: 280px; }         /* izquierda duplicada */
+.loto-der1 { width: 280px; transform: scaleX(-1); } /* derecha invertida duplicada */
+.loto-der2 { width: 450px; }        /* centro 2.5x tamaño original */
 
 /* Animaciones */
 @keyframes florecer {
-  0% { opacity: 0; transform: scale(0) rotate(-20deg); }
-  60% { opacity: 1; transform: scale(1.1) rotate(5deg); }
-  100% { opacity: 1; transform: scale(1) rotate(0deg); }
+  0% {
+    opacity: 0;
+    transform: scale(0) translateY(50px) rotate(-20deg);
+  }
+  60% {
+    opacity: 1;
+    transform: scale(1.1) translateY(-10px) rotate(5deg);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0) rotate(0deg);
+  }
 }
 
 @keyframes brilloLoto {
