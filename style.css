@@ -1,11 +1,5 @@
-/* ============================= */
 /* RESET */
-/* ============================= */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
 html, body {
   height: 100%;
@@ -37,6 +31,7 @@ html, body {
   background-repeat: repeat;
 }
 
+/* Estrellas pequeñas */
 .stars::before {
   background-image:
     radial-gradient(1px 1px at 10% 20%, white, transparent),
@@ -51,6 +46,7 @@ html, body {
   animation: blink 2s infinite alternate;
 }
 
+/* Estrellas medianas */
 .stars::after {
   background-image:
     radial-gradient(2px 2px at 15% 50%, #cce6ff, transparent),
@@ -61,10 +57,7 @@ html, body {
   animation: blink 3s infinite alternate;
 }
 
-@keyframes blink {
-  from { opacity: 0.5; }
-  to { opacity: 1; }
-}
+@keyframes blink { from { opacity: 0.5; } to { opacity: 1; } }
 
 /* ============================= */
 /* TRANSICIÓN PIXEL */
@@ -82,21 +75,15 @@ html, body {
   z-index: 999;
 }
 
-.pixel {
-  background: black;
-  transform: scale(0);
-  transition: transform 0.3s ease;
-}
+.pixel { background: black; transform: scale(0); transition: transform 0.3s ease; }
 
 /* ============================= */
 /* PANTALLA INICIO */
 /* ============================= */
 .inicio {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100vh;
+  top: 0; left: 0;
+  width: 100%; height: 100vh;
   background-color: #050816;
   display: flex;
   justify-content: center;
@@ -112,10 +99,7 @@ html, body {
   box-shadow: 0 0 20px #00f0ff;
 }
 
-.cuadro-start h1 {
-  font-size: 28px;
-  margin-bottom: 30px;
-}
+.cuadro-start h1 { font-size: 28px; margin-bottom: 30px; }
 
 .cuadro-start button {
   font-family: 'Press Start 2P', cursive;
@@ -128,10 +112,7 @@ html, body {
   transition: 0.2s;
 }
 
-.cuadro-start button:hover {
-  background: #00f0ff;
-  color: black;
-}
+.cuadro-start button:hover { background: #00f0ff; color: black; }
 
 /* ============================= */
 /* CONTENIDO PRINCIPAL */
@@ -150,61 +131,45 @@ html, body {
 /* ============================= */
 .lotos {
   position: absolute;
-  bottom: 5%;               /* desde el piso */
+  bottom: 5%;
   left: 50%;
   transform: translateX(-50%);
   display: flex;
   justify-content: center;
   align-items: flex-end;
-  gap: 1px;                  /* más cercanas */
+  gap: 5px;
   pointer-events: none;
   z-index: 5;
 }
 
 .loto {
   opacity: 0;
-  transform: scale(0) translateY(50px) rotate(-20deg);
+  transform: scale(0) translateY(50px);
   filter: drop-shadow(0 0 12px #ff66cc);
   transition: transform 3s ease, opacity 3s ease, filter 3s ease;
 }
 
-/* Florecer desde el piso */
 .loto.florecer {
   opacity: 1;
-  transform: scale(1) translateY(0) rotate(0deg);
+  transform: scale(1) translateY(0);
   filter: drop-shadow(0 0 25px #ff66cc) drop-shadow(0 0 35px #ff00aa);
+  animation: flotar 4s ease-in-out infinite alternate, rotar 6s linear infinite;
 }
 
-/* Tamaños y posición */
-.loto-izq { width: 280px; }                     /* izquierda */
-.loto-centro { width: 450px; transform: scaleX(-1); } /* centro más grande e invertida */
-.loto-der { width: 280px; }    /* derecha invertida */
+/* Tamaños y efecto espejo */
+.loto-izq { width: 280px; }
+.loto-der1 { width: 280px; transform: scaleX(-1); }
+.loto-der2 { width: 450px; transform: scaleX(-1); }
 
-/* ============================= */
-/* ANIMACIONES FLORES */
-/* ============================= */
-@keyframes florecer {
-  0% {
-    opacity: 0;
-    transform: scale(0) translateY(50px) rotate(-20deg);
-  }
-  60% {
-    opacity: 1;
-    transform: scale(1.1) translateY(-10px) rotate(5deg);
-  }
-  100% {
-    opacity: 1;
-    transform: scale(1) translateY(0) rotate(0deg);
-  }
-}
-
-@keyframes brilloLoto {
-  from { filter: drop-shadow(0 0 5px #ff00aa) drop-shadow(0 0 10px #ff00aa); }
-  to   { filter: drop-shadow(0 0 20px #ff00aa) drop-shadow(0 0 35px #ff66cc); }
-}
-
+/* Animaciones */
 @keyframes flotar {
-  0%   { transform: translateY(0) scale(1); }
-  50%  { transform: translateY(-8px) scale(1); }
+  0% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-12px) scale(1.05); }
   100% { transform: translateY(0) scale(1); }
+}
+
+@keyframes rotar {
+  0% { transform: rotate(-3deg); }
+  50% { transform: rotate(3deg); }
+  100% { transform: rotate(-3deg); }
 }
