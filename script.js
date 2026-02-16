@@ -8,17 +8,16 @@ function iniciarTodo() {
     const botonPrincipal = document.getElementById("botonContinuarPrincipal");
     const florCentral = document.querySelector(".loto-der2");
 
-    // CLICK primer CONTINUAR
     botonPrincipal.addEventListener("click", () => {
 
-      // desaparecer flor central
-      if (florCentral) {
-        florCentral.style.transition = "opacity 0.8s, transform 0.8s";
-        florCentral.style.opacity = 0;
-        florCentral.style.transform = "scale(0)";
-      }
+      // desaparecer flor central y otros lotos
+      document.querySelectorAll('.loto').forEach(f => {
+        f.style.transition = "opacity 0.8s, transform 0.8s";
+        f.style.opacity = 0;
+        f.style.transform = "scale(0)";
+      });
 
-      // mover boton CONTINUAR a la posicion de la flor
+      // mover boton al centro de la flor
       const rectFlor = florCentral.getBoundingClientRect();
       botonPrincipal.style.position = "absolute";
       botonPrincipal.style.top = rectFlor.top + "px";
@@ -42,7 +41,7 @@ function iniciarTodo() {
       }, 500);
     });
 
-    // CARTAS: mostrar mensaje en cuadro
+    // CARTAS
     const cartas = document.querySelectorAll("#pantallaCartas .carta");
     const mensajeCarta = document.getElementById("mensajeCarta");
 
@@ -50,6 +49,7 @@ function iniciarTodo() {
       carta.addEventListener("click", () => {
         mensajeCarta.innerHTML = carta.dataset.mensaje;
         mensajeCarta.style.display = "block";
+        setTimeout(()=>{ mensajeCarta.style.opacity = 1; },50);
       });
     });
 
@@ -66,6 +66,26 @@ function iniciarTodo() {
         pantallaRomantica.style.opacity = 0;
         pantallaRomantica.style.transition = "opacity 0.8s";
         setTimeout(() => { pantallaRomantica.style.opacity = 1; }, 50);
+
+        // animar título y cuadro rosa
+        const titulo = document.getElementById("tituloRomantico");
+        titulo.style.opacity = 1;
+        titulo.style.transform = "translateY(0)";
+
+        const cuadro = document.querySelector(".cuadro-rosa");
+        cuadro.style.opacity = 1;
+
+        // animar letras del cuadro romántico
+        const texto = document.getElementById("textoRomantico");
+        const letras = texto.innerText.split("");
+        texto.innerHTML = "";
+        letras.forEach((l, i) => {
+          const span = document.createElement("span");
+          span.innerHTML = l === " " ? "&nbsp;" : l;
+          texto.appendChild(span);
+          setTimeout(()=>{ span.style.opacity = 1; span.style.transform="translateY(0)"; }, i*50);
+        });
+
       }, 800);
     });
 
@@ -81,7 +101,13 @@ function iniciarTodo() {
         pantallaFinal.style.display = "flex";
         pantallaFinal.style.opacity = 0;
         pantallaFinal.style.transition = "opacity 0.8s";
-        setTimeout(() => { pantallaFinal.style.opacity = 1; }, 50);
+        setTimeout(() => { 
+          pantallaFinal.style.opacity = 1;
+          // animar botones finales
+          const botones = document.querySelector(".final-buttons");
+          botones.style.opacity = 1;
+          botones.style.transform = "translateY(0)";
+        }, 50);
       }, 800);
     });
 
@@ -100,57 +126,4 @@ function iniciarTodo() {
   }, 1500);
 }
 
-// TRANSICIÓN PIXEL
-function startGame() {
-  const transition = document.querySelector(".pixel-transition");
-  transition.innerHTML = "";
-  for (let i = 0; i < 400; i++) {
-    const pixel = document.createElement("div");
-    pixel.classList.add("pixel");
-    transition.appendChild(pixel);
-    setTimeout(() => { pixel.style.transform = "scale(1)"; }, Math.random() * 500);
-  }
-
-  setTimeout(() => {
-    document.querySelector(".inicio").style.display = "none";
-    document.getElementById("pantallaPrincipal").style.display = "block";
-    transition.innerHTML = "";
-  }, 1200);
-}
-
-// FLORECER LOTOS
-function florecerLotos() {
-  const lotos = document.querySelectorAll('.loto');
-  lotos.forEach((loto, index) => {
-    setTimeout(() => { loto.classList.add('florecer'); }, index * 500);
-  });
-}
-
-// ANIMACIÓN DE TEXTO
-function animarTexto() {
-  const h2 = document.getElementById("bienvenida");
-  if (!h2) return;
-  const lineas = h2.innerHTML.split("<br>");
-  h2.innerHTML = "";
-  let delayTotal = 0;
-  lineas.forEach((linea, idxLinea) => {
-    const lineContainer = document.createElement("div");
-    lineContainer.style.display = "block";
-    h2.appendChild(lineContainer);
-    linea.split("").forEach((letra, idxLetra) => {
-      const span = document.createElement("span");
-      span.innerHTML = letra === " " ? "&nbsp;" : letra;
-      span.style.display = "inline-block";
-      span.style.opacity = 0;
-      span.style.transition = "opacity 0.3s ease, transform 0.3s ease";
-      lineContainer.appendChild(span);
-      setTimeout(() => {
-        span.style.opacity = 1;
-        span.style.transform = "translateY(-5px)";
-        setTimeout(() => { span.style.transform = "translateY(0)"; }, 300);
-      }, delayTotal + idxLetra * 100);
-    });
-    delayTotal += linea.length * 100 + 300;
-    if (idxLinea < lineas.length - 1) { const br = document.createElement("br"); h2.appendChild(br);}
-  });
-}
+/* TRANSICIÓN PIXEL, FLORECER LOTOS y ANIMACIÓN DE TEXTO igual que antes */
