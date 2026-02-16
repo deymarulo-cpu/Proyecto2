@@ -2,18 +2,14 @@
 function iniciarTodo() {
   startGame();
 
-  // Esperar a que la pantalla principal se muestre y los lotos florezcan
   setTimeout(() => {
     florecerLotos();
     animarTexto();
 
-    // ===== CLICK EN LA FLOR CENTRAL =====
-    const florCentral = document.querySelector(".loto-der2");
-    if (florCentral) {
-      florCentral.style.cursor = "pointer"; // indica que se puede clicar
-
-      florCentral.addEventListener("click", () => {
-        // Fade out de pantalla principal
+    // BOTÓN CONTINUAR
+    const boton = document.getElementById("botonContinuar");
+    if (boton) {
+      boton.addEventListener("click", () => {
         const pantallaActual = document.getElementById("pantallaPrincipal");
         pantallaActual.style.transition = "opacity 0.8s";
         pantallaActual.style.opacity = 0;
@@ -21,7 +17,6 @@ function iniciarTodo() {
         setTimeout(() => {
           pantallaActual.style.display = "none";
 
-          // Mostrar pantalla de cartas
           const pantallaCartas = document.getElementById("pantallaCartas");
           pantallaCartas.style.display = "flex";
           pantallaCartas.style.opacity = 0;
@@ -34,7 +29,7 @@ function iniciarTodo() {
       });
     }
 
-  }, 1500); // espera suficiente para que termine la transición pixel
+  }, 1500);
 }
 
 // ===== TRANSICIÓN PIXEL =====
