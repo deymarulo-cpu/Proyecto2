@@ -1,95 +1,76 @@
 document.getElementById("btnStart").addEventListener("click", iniciarTodo);
 
-function iniciarTodo() {
+function iniciarTodo(){
+  ocultarPantalla("inicio");
+  mostrarPantalla("pantallaPrincipal");
   florecerLotos();
-  animarTextoPrincipal();
+  animarTexto("bienvenida");
 
-  const botonPrincipal = document.getElementById("botonContinuarPrincipal");
-
-  botonPrincipal.addEventListener("click", () => {
-    document.querySelectorAll('.loto').forEach(f => {
-      f.style.transition = "opacity 0.8s, transform 0.8s";
-      f.style.opacity = 0;
-      f.style.transform = "scale(0)";
-    });
-
+  // Continuar principal -> cartas
+  document.getElementById("botonContinuarPrincipal").onclick = () => {
+    document.querySelectorAll('.loto').forEach(f=>f.style.opacity=0);
     ocultarPantalla("pantallaPrincipal");
     mostrarPantalla("pantallaCartas");
+  };
+
+  // Animación cartas
+  document.querySelectorAll("#pantallaCartas .carta").forEach(carta=>{
+    carta.onclick = ()=>{
+      const mensaje=document.getElementById("mensajeCarta");
+      mensaje.innerHTML=carta.dataset.mensaje;
+      mensaje.style.display="block";
+      setTimeout(()=>mensaje.style.opacity=1,50);
+    };
   });
 
-  // CARTAS
-  const cartas = document.querySelectorAll("#pantallaCartas .carta");
-  const mensajeCarta = document.getElementById("mensajeCarta");
-  cartas.forEach(carta => {
-    carta.addEventListener("click", () => {
-      mensajeCarta.innerHTML = carta.dataset.mensaje;
-      mensajeCarta.style.display = "block";
-      setTimeout(() => mensajeCarta.style.opacity = 1, 50);
-    });
-  });
-
-  // CONTINUAR cartas -> romántica
-  document.getElementById("botonContinuarCartas").addEventListener("click", () => {
+  // Continuar cartas -> romántica
+  document.getElementById("botonContinuarCartas").onclick = ()=>{
     ocultarPantalla("pantallaCartas");
-    mostrarPantalla("pantallaRomantica", () => {
-      animarTituloRomantico();
-      animarCuadroRomantico();
+    mostrarPantalla("pantallaRomantica",()=>{
+      document.getElementById("tituloRomantico").style.opacity=1;
+      animarTexto("textoRomantico");
+      document.querySelector(".cuadro-rosa").style.opacity=1;
     });
-  });
+  };
 
-  // CONTINUAR romántica -> pantalla final
-  document.getElementById("botonContinuarRomantica").addEventListener("click", () => {
+  // Continuar romántica -> final
+  document.getElementById("botonContinuarRomantica").onclick = ()=>{
     ocultarPantalla("pantallaRomantica");
-    mostrarPantalla("pantallaFinal", () => {
-      const botones = document.querySelector(".final-buttons");
-      botones.style.opacity = 1;
-      botones.style.transform = "translateY(0)";
+    mostrarPantalla("pantallaFinal",()=>{
+      const botones=document.querySelector(".final-buttons");
+      botones.style.opacity=1;
+      botones.style.transform="translateY(0)";
     });
-  });
+  };
 
-  // Pantalla final
-  document.getElementById("botonSi").addEventListener("click", () => {
-    window.location.href = "https://vt.tiktok.com/ZSmkXQ9mE/";
-  });
-  document.getElementById("botonNo").addEventListener("click", () => {
+  document.getElementById("botonSi").onclick = ()=> window.location.href="https://vt.tiktok.com/ZSmkXQ9mE/";
+  document.getElementById("botonNo").onclick = ()=>{
     ocultarPantalla("pantallaFinal");
     mostrarPantalla("pantallaGameOver");
+  };
+}
+
+// FUNCIONES UTILES
+function ocultarPantalla(id){ document.getElementById(id).style.display="none"; }
+function mostrarPantalla(id,callback){
+  const p=document.getElementById(id);
+  p.style.display="flex";
+  p.style.opacity=0;
+  setTimeout(()=>{p.style.opacity=1; if(callback)callback();},50);
+}
+
+function florecerLotos(){
+  document.querySelectorAll(".loto").forEach((l,i)=>setTimeout(()=>l.classList.add("florecer"), i*300));
+}
+
+function animarTexto(id){
+  const t=document.getElementById(id);
+  const letras=t.innerText.split("");
+  t.innerHTML="";
+  letras.forEach((l,i)=>{
+    const span=document.createElement("span");
+    span.innerHTML=l===" "?"&nbsp;":l;
+    t.appendChild(span);
+    setTimeout(()=>{span.style.opacity=1; span.style.transform="translateY(0)";}, i*50);
   });
 }
-
-function florecerLotos() {
-  document.querySelectorAll(".loto").forEach((loto, i) => {
-    setTimeout(() => loto.classList.add("florecer"), i*300);
-  });
-}
-
-function animarTextoPrincipal() {
-  const bienvenida = document.getElementById("bienvenida");
-  const letras = bienvenida.innerText.split("");
-  bienvenida.innerHTML = "";
-  letras.forEach((l, i) => {
-    const span = document.createElement("span");
-    span.innerHTML = l === " " ? "&nbsp;" : l;
-    bienvenida.appendChild(span);
-    setTimeout(()=> span.style.opacity = 1, i*50);
-  });
-}
-
-function animarTituloRomantico() {
-  const titulo = document.getElementById("tituloRomantico");
-  titulo.style.opacity = 1;
-  titulo.style.transform = "translateY(0)";
-}
-
-function animarCuadroRomantico() {
-  const cuadro = document.querySelector(".cuadro-rosa");
-  cuadro.style.opacity = 1;
-
-  const texto = document.getElementById("textoRomantico");
-  const letras = texto.innerText.split("");
-  texto.innerHTML = "";
-  letras.forEach((l, i) => {
-    const span = document.createElement("span");
-    span.innerHTML = l === " " ? "&nbsp;" : l;
-    texto.appendChild(span);
-    setTimeout(()=>{ span.style.opacity = 1; span.style.transform="translateY
