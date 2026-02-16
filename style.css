@@ -175,13 +175,14 @@ html, body {
 }
 
 .pantalla h2 {
-  text-align: left;
-  line-height: 1.8; /* menos espacio entre líneas */
+  text-align: left;      /* alineación a la izquierda */
+  line-height: 1.8;      /* espacio entre líneas reducido */
   margin: 50px 0 0 50px;
   max-width: 600px;
   font-size: 28px;
   color: white;
   overflow: hidden;
+  font-family: 'Press Start 2P', Arial, sans-serif; /* fallback que soporte emojis */
 }
 
 .pantalla h2 span {
