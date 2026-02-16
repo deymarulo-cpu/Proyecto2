@@ -154,7 +154,7 @@ html, body {
   display: flex;
   justify-content: center;
   align-items: flex-end;
-  gap: 20px;            /* más juntas */
+  gap: 10px;            /* más cercanas */
   pointer-events: none;
   z-index: 5;
 }
@@ -174,9 +174,9 @@ html, body {
 }
 
 /* Tamaños y posiciones */
-.loto-izq { width: 280px; }         /* izquierda duplicada */
-.loto-der1 { width: 280px; transform: scaleX(-1); } /* derecha invertida duplicada */
-.loto-der2 { width: 450px; }        /* centro 2.5x tamaño original */
+.loto-izq { width: 280px; }                     /* izquierda */
+.loto-der1 { width: 280px; transform: scaleX(-1); } /* derecha invertida */
+.loto-der2 { width: 450px; transform: scaleX(-1); } /* centro invertida 2.5x tamaño original */
 
 /* Animaciones */
 @keyframes florecer {
