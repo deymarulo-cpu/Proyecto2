@@ -68,32 +68,32 @@ function iniciarTodo() {
         setTimeout(() => { pantallaRomantica.style.opacity = 1; }, 50);
       }, 800);
     });
+    
+  // CONTINUAR romántica -> pantalla final
+const botonRomantica = document.getElementById("botonContinuarRomantica");
+botonRomantica.addEventListener("click", () => {
+  // Hacer desaparecer SOLO la flor central
+  const florCentral = document.querySelector(".loto-der2");
+  if (florCentral) {
+    florCentral.style.transition = "opacity 0.8s, transform 0.8s";
+    florCentral.style.opacity = 0;
+    florCentral.style.transform = "scale(0) translateY(50px)";
+  }
 
-    // CONTINUAR romántica -> pantalla final
-    const botonRomantica = document.getElementById("botonContinuarRomantica");
-    botonRomantica.addEventListener("click", () => {
-      // Hacer desaparecer las flores de loto
-      const lotos = document.querySelectorAll('.loto');
-      lotos.forEach(loto => {
-        loto.style.transition = "opacity 0.8s, transform 0.8s";
-        loto.style.opacity = 0;
-        loto.style.transform = "scale(0) translateY(50px)";
-      });
+  // Desaparecer pantalla romántica y mostrar final
+  const pantallaRomantica = document.getElementById("pantallaRomantica");
+  pantallaRomantica.style.transition = "opacity 0.8s";
+  pantallaRomantica.style.opacity = 0;
 
-      // Desaparecer pantalla romántica y mostrar final
-      const pantallaRomantica = document.getElementById("pantallaRomantica");
-      pantallaRomantica.style.transition = "opacity 0.8s";
-      pantallaRomantica.style.opacity = 0;
-      
-      setTimeout(() => {
-        pantallaRomantica.style.display = "none";
-        const pantallaFinal = document.getElementById("pantallaFinal");
-        pantallaFinal.style.display = "flex";
-        pantallaFinal.style.opacity = 0;
-        pantallaFinal.style.transition = "opacity 0.8s";
-        setTimeout(() => { pantallaFinal.style.opacity = 1; }, 50);
-      }, 800);
-    });
+  setTimeout(() => {
+    pantallaRomantica.style.display = "none";
+    const pantallaFinal = document.getElementById("pantallaFinal");
+    pantallaFinal.style.display = "flex";
+    pantallaFinal.style.opacity = 0;
+    pantallaFinal.style.transition = "opacity 0.8s";
+    setTimeout(() => { pantallaFinal.style.opacity = 1; }, 50);
+  }, 800);
+});
 
     // Pantalla final: SI -> TikTok / NO -> GAME OVER
     document.getElementById("botonSi").addEventListener("click", () => {
