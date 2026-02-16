@@ -18,22 +18,6 @@ function iniciarTodo() {
         florCentral.style.transform = "scale(0)";
       }
 
-      // mover boton CONTINUAR a la posicion de la flor
-      const rectFlor = florCentral.getBoundingClientRect();
-      botonPrincipal.style.position = "absolute";
-      botonPrincipal.style.top = rectFlor.top + "px";
-      botonPrincipal.style.left = rectFlor.left + "px";
-      botonPrincipal.style.transform = "translate(0,0)";
-
-         // DESAPARECER FLORES IZQUIERDA Y DERECHA
-      [florIzq, florDer1].forEach(flor => {
-        if (flor) {
-          flor.style.transition = "opacity 0.8s, transform 0.8s";
-          flor.style.opacity = 0;
-          flor.style.transform = "scale(0) translateY(50px)";
-        }
-      });
-
       // pasar a pantalla de cartas
       setTimeout(() => {
         const pantallaActual = document.getElementById("pantallaPrincipal");
@@ -63,6 +47,21 @@ function iniciarTodo() {
     });
 
     // CONTINUAR cartas -> romántica
+    const botonCartas = document.getElementById("botonContinuarCartas");
+botonCartas.addEventListener("click", () => {
+
+  // Desaparecer las flores de los lados (izquierda y derecha)
+  if (florIzq) {
+    florIzq.style.transition = "opacity 0.8s, transform 0.8s";
+    florIzq.style.opacity = 0;
+    florIzq.style.transform = "scale(0)";
+  }
+
+  if (florDer1) {
+    florDer1.style.transition = "opacity 0.8s, transform 0.8s";
+    florDer1.style.opacity = 0;
+    florDer1.style.transform = "scale(0)";
+  }
     const botonCartas = document.getElementById("botonContinuarCartas");
     botonCartas.addEventListener("click", () => {
       const pantallaCartas = document.getElementById("pantallaCartas");
