@@ -6,11 +6,9 @@
   <title>Juguemos un juego Mi Amor</title>
   <link rel="icon" href="corazon.png" type="image/png">
 
-  <!-- Fuente retro -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
-
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -18,7 +16,7 @@
   <!-- Fondo estrellas -->
   <div class="stars"></div>
 
-  <!-- Flores de loto centradas inferior -->
+  <!-- Flores de loto -->
   <div class="lotos">
     <img src="https://raw.githubusercontent.com/deymarulo-cpu/Proyecto2/refs/heads/main/loto2.png" class="loto loto-izq">
     <img src="https://raw.githubusercontent.com/deymarulo-cpu/Proyecto2/refs/heads/main/loto.png" class="loto loto-der2">
@@ -37,17 +35,15 @@
   </div>
 
   <!-- Pantalla Principal -->
-  <div class="pantalla" id="pantallaPrincipal">
+  <div class="pantalla" id="pantallaPrincipal" style="display:none;">
     <h2 id="bienvenida">
-      Todo comenzó<br>
-      sin que me<br>
-      diera cuenta...
+      Todo comenzó<br>sin que me<br>diera cuenta...
     </h2>
     <button id="botonContinuarPrincipal" class="boton-derecha">CONTINUAR</button>
   </div>
 
   <!-- Pantalla de cartas -->
-  <div class="pantalla" id="pantallaCartas">
+  <div class="pantalla" id="pantallaCartas" style="display:none;">
     <h2>📧 TIENES CORREO 📧</h2>
     <div class="cartas-container">
       <div class="carta" data-mensaje="💥 Esa noche fuimos ácido nítrico y sulfúrico y ese beso fue dinamita.">Carta 1</div>
@@ -58,7 +54,7 @@
   </div>
 
   <!-- Pantalla romántica -->
-  <div class="pantalla" id="pantallaRomantica">
+  <div class="pantalla" id="pantallaRomantica" style="display:none;">
     <h2 id="tituloRomantico">💖 TE ESTÁ GUSTANDO MI LEYLEY 💖</h2>
     <div class="cuadro-rosa">
       <p id="textoRomantico">
@@ -69,7 +65,7 @@
   </div>
 
   <!-- Pantalla final -->
-  <div class="pantalla" id="pantallaFinal">
+  <div class="pantalla" id="pantallaFinal" style="display:none;">
     <h2>❓ ¿Quieres ser mi novia Leyley? ❓</h2>
     <div class="final-buttons">
       <button id="botonSi" class="boton-derecha">SI ❤️</button>
@@ -77,8 +73,8 @@
     </div>
   </div>
 
-  <!-- GAME OVER -->
-  <div class="pantalla" id="pantallaGameOver">
+  <!-- Game Over -->
+  <div class="pantalla" id="pantallaGameOver" style="display:none;">
     <h2>GAME OVER 💀</h2>
   </div>
 
