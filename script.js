@@ -5,13 +5,17 @@ function iniciarTodo() {
     florecerLotos();
     animarTexto();
 
+    // Referencias a botones y flores
     const botonPrincipal = document.getElementById("botonContinuarPrincipal");
     const florCentral = document.querySelector(".loto-der2");
     const florIzq = document.querySelector(".loto-izq");
     const florDer1 = document.querySelector(".loto-der1");
+    const botonCartas = document.getElementById("botonContinuarCartas");
+    const botonRomantica = document.getElementById("botonContinuarRomantica");
 
-    // CLICK primer CONTINUAR → desaparece flor central
+    // ------------------- PRIMER CONTINUAR -------------------
     botonPrincipal.addEventListener("click", () => {
+      // Desaparece flor central
       if (florCentral) {
         florCentral.style.transition = "opacity 0.8s, transform 0.8s";
         florCentral.style.opacity = 0;
@@ -35,7 +39,7 @@ function iniciarTodo() {
       }, 500);
     });
 
-    // CARTAS: mostrar mensaje en cuadro
+    // ------------------- PANTALLA CARTAS -------------------
     const cartas = document.querySelectorAll("#pantallaCartas .carta");
     const mensajeCarta = document.getElementById("mensajeCarta");
 
@@ -46,26 +50,21 @@ function iniciarTodo() {
       });
     });
 
-    // CLICK CONTINUAR en cartas → desaparecen flores de los lados
-    const botonCartas = document.getElementById("botonContinuarCartas");
+    // CONTINUAR cartas → desaparecen flores izquierda y derecha
     botonCartas.addEventListener("click", () => {
-      // Desaparecer flores izquierda y derecha
-      if (florIzq) {
-        florIzq.style.transition = "opacity 0.8s, transform 0.8s";
-        florIzq.style.opacity = 0;
-        florIzq.style.transform = "scale(0)";
-      }
-
-      if (florDer1) {
-        florDer1.style.transition = "opacity 0.8s, transform 0.8s";
-        florDer1.style.opacity = 0;
-        florDer1.style.transform = "scale(0)";
-      }
+      [florIzq, florDer1].forEach(flor => {
+        if (flor) {
+          flor.style.transition = "opacity 0.8s, transform 0.8s";
+          flor.style.opacity = 0;
+          flor.style.transform = "scale(0)";
+        }
+      });
 
       // Transición a pantalla romántica
       const pantallaCartas = document.getElementById("pantallaCartas");
       pantallaCartas.style.transition = "opacity 0.8s";
       pantallaCartas.style.opacity = 0;
+
       setTimeout(() => {
         pantallaCartas.style.display = "none";
         const pantallaRomantica = document.getElementById("pantallaRomantica");
@@ -76,9 +75,9 @@ function iniciarTodo() {
       }, 800);
     });
 
-    // CONTINUAR romántica -> pantalla final
-    const botonRomantica = document.getElementById("botonContinuarRomantica");
+    // ------------------- PANTALLA ROMÁNTICA -------------------
     botonRomantica.addEventListener("click", () => {
+      // Opcional: desaparecer la flor central si aún queda
       if (florCentral) {
         florCentral.style.transition = "opacity 0.8s, transform 0.8s";
         florCentral.style.opacity = 0;
@@ -99,9 +98,18 @@ function iniciarTodo() {
       }, 800);
     });
 
-    // Pantalla final: SI -> TikTok / NO -> GAME OVER
+    // ------------------- PANTALLA FINAL -------------------
     document.getElementById("botonSi").addEventListener("click", () => {
-      window.location.href = "https://vt.tiktok.com/ZSmkXQ9mE/";
+      const pantallaFinal = document.getElementById("pantallaFinal");
+      pantallaFinal.style.display = "none";
+
+      const pantallaCorazon = document.getElementById("pantallaCorazon");
+      if (pantallaCorazon) {
+        pantallaCorazon.style.display = "flex";
+        pantallaCorazon.style.opacity = 0;
+        pantallaCorazon.style.transition = "opacity 0.8s";
+        setTimeout(() => { pantallaCorazon.style.opacity = 1; }, 50);
+      }
     });
 
     document.getElementById("botonNo").addEventListener("click", () => {
