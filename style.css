@@ -156,7 +156,7 @@ html, body {
   display: flex;
   justify-content: center;
   align-items: flex-end;
-  gap: 5px;                  /* más cercanas */
+  gap: 1px;                  /* más cercanas */
   pointer-events: none;
   z-index: 5;
 }
@@ -178,7 +178,7 @@ html, body {
 /* Tamaños y posición */
 .loto-izq { width: 280px; }                     /* izquierda */
 .loto-centro { width: 450px; transform: scaleX(-1); } /* centro más grande e invertida */
-.loto-der { width: 280px; transform: scaleX(-1); }    /* derecha invertida */
+.loto-der { width: 280px; }    /* derecha invertida */
 
 /* ============================= */
 /* ANIMACIONES FLORES */
