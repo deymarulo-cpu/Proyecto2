@@ -12,10 +12,8 @@ html, body {
 /* ===== FONDO ESTRELLADO ===== */
 .stars {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
   pointer-events: none;
   z-index: 0;
 }
@@ -57,11 +55,8 @@ html, body {
 
 /* ===== TRANSICIÓN PIXEL ===== */
 .pixel-transition {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  position: fixed; top: 0; left: 0;
+  width: 100%; height: 100%;
   display: grid;
   grid-template-columns: repeat(20, 1fr);
   grid-template-rows: repeat(20, 1fr);
@@ -73,13 +68,10 @@ html, body {
 
 /* ===== PANTALLA INICIO ===== */
 .inicio {
-  position: fixed;
-  top: 0; left: 0;
+  position: fixed; top: 0; left: 0;
   width: 100%; height: 100vh;
   background-color: #050816;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  display: flex; justify-content: center; align-items: center;
   z-index: 10;
 }
 
@@ -106,15 +98,12 @@ html, body {
 
 .cuadro-start button:hover { background: #00f0ff; color: black; }
 
-/* ===== CONTENIDO PRINCIPAL / PANTALLAS ===== */
+/* ===== CONTENIDO PRINCIPAL ===== */
 .pantalla {
   min-height: 100vh;
-  display: flex;
-  justify-content: flex-start;
-  align-items: flex-start;
-  position: relative;
-  z-index: 1;
-  flex-direction: column;
+  display: flex; flex-direction: column;
+  justify-content: flex-start; align-items: flex-start;
+  position: relative; z-index: 1;
 }
 
 .pantalla h2 {
@@ -125,7 +114,6 @@ html, body {
   font-size: 28px;
   color: white;
   overflow: hidden;
-  font-family: 'Press Start 2P', Arial, sans-serif;
 }
 
 .pantalla h2 span {
@@ -142,8 +130,7 @@ html, body {
   left: 50%;
   transform: translateX(-50%);
   display: flex;
-  justify-content: center;
-  align-items: flex-end;
+  justify-content: center; align-items: flex-end;
   gap: 5px;
   pointer-events: none;
   z-index: 5;
@@ -181,60 +168,29 @@ html, body {
 
 /* ===== PANTALLA DE CARTAS ===== */
 #pantallaCartas {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  display: flex; flex-direction: column;
+  justify-content: center; align-items: center;
   min-height: 100vh;
-  flex-direction: column;
   gap: 40px;
   background-color: #000814;
 }
 
-.cartas-container {
-  display: flex;
-  gap: 50px;
-}
+.cartas-container { display: flex; gap: 50px; }
 
 .carta {
-  width: 150px;
-  height: 220px;
+  width: 150px; height: 220px;
   background-color: #111;
   border: 3px solid #00f0ff;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 18px;
-  cursor: pointer;
+  display: flex; justify-content: center; align-items: center;
+  font-size: 18px; cursor: pointer;
   transition: transform 0.3s, box-shadow 0.3s;
 }
 
-.carta:hover {
-  transform: scale(1.1);
-  box-shadow: 0 0 20px #00f0ff;
-}
+.carta:hover { transform: scale(1.1); box-shadow: 0 0 20px #00f0ff; }
 
 /* ===== BOTONES ===== */
-.boton-derecha {
-  position: absolute;
-  top: 50%;
-  right: 20px;
-  transform: translateY(-50%);
-  padding: 15px 35px;
-  font-family: 'Press Start 2P', Arial, sans-serif;
-  font-size: 18px;
-  border: 3px solid #00f0ff;
-  background: black;
-  color: #00f0ff;
-  cursor: pointer;
-  transition: 0.2s;
-}
-
-.boton-derecha:hover { background: #00f0ff; color: black; }
-
+.boton-derecha,
 .boton-inferior-derecha {
-  position: absolute;
-  bottom: 20px;
-  right: 20px;
   padding: 15px 35px;
   font-family: 'Press Start 2P', Arial, sans-serif;
   font-size: 18px;
@@ -245,14 +201,26 @@ html, body {
   transition: 0.2s;
 }
 
+.boton-derecha { position: absolute; top: 50%; right: 20px; transform: translateY(-50%); }
+.boton-derecha:hover,
 .boton-inferior-derecha:hover { background: #00f0ff; color: black; }
 
+.boton-inferior-derecha { position: absolute; bottom: 20px; right: 20px; }
+
 /* ===== PANTALLA ROMÁNTICA ===== */
-/* ===== TÍTULO ROMÁNTICO SIN FONDO ===== */
+#pantallaRomantica {
+  display: flex; flex-direction: column;
+  justify-content: flex-start; align-items: flex-start;
+  padding-top: 50px;
+  min-height: 100vh;
+  background-color: #000814;
+  text-align: left;
+}
+
+/* TÍTULO ROMÁNTICO SIN FONDO */
 .titulo-rosa-neon {
   position: relative;
-  top: 50px;
-  left: 50%;
+  top: 50px; left: 50%;
   transform: translateX(-50%);
   border: 3px solid #ff66cc;
   border-radius: 10px;
@@ -266,10 +234,10 @@ html, body {
   z-index: 5;
 }
 
-/* ===== MENSAJE ROMÁNTICO ===== */
+/* MENSAJE ROMÁNTICO */
 .mensaje-rosa-semitransparente {
   position: relative;
-  top: 120px; /* Ajusta la distancia del título */
+  top: 120px;
   left: 50%;
   transform: translateX(-50%);
   max-width: 850px;
@@ -285,7 +253,36 @@ html, body {
   z-index: 5;
 }
 
-/* ===== BOTONES PANTALLA FINAL CENTRADOS INFERIOR ===== */
+/* CUADRO ROSA / TITULO ROMÁNTICO */
+.cuadro-rosa,
+.titulo-rosa,
+.mensaje-rosa {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 20px;
+  border: 3px solid #ff66cc;
+  color: black;
+  text-align: center;
+  z-index: 5;
+  box-shadow: 0 0 20px #ff66cc;
+}
+
+.cuadro-rosa { top: 50px; padding: 30px; max-width: 900px; background-color: rgba(255,102,204,0.8); text-align:left;}
+.titulo-rosa { top: 50px; padding: 20px; max-width: 900px; background-color: rgba(255,102,204,0.9);}
+.mensaje-rosa { top: 200px; padding: 30px; max-width: 900px; background-color: rgba(255,102,204,0.8); text-align:left;}
+
+/* ===== PANTALLA FINAL ===== */
+#pantallaFinal, #pantallaGameOver {
+  display: none;
+  flex-direction: column;
+  justify-content: center; align-items: center;
+  text-align: center;
+  min-height: 100vh;
+  position: relative;
+}
+
+/* BOTONES CENTRADOS FINAL */
 .final-buttons {
   display: flex;
   gap: 30px;
@@ -295,58 +292,7 @@ html, body {
   transform: translateX(-50%);
 }
 
-
-#pantallaRomantica {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-start;
-  padding-top: 50px;
-  min-height: 100vh;
-  background-color: #000814;
-  text-align: left;
-}
-
-.nota {
-  max-width: 800px;
-  margin: 20px auto;
-  line-height: 1.6;
-  font-size: 14px;
-  padding: 0 20px;
-}
-
-/* ===== PANTALLA FINAL ===== */
-#pantallaFinal {
-  display: none;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  min-height: 100vh;
-  position: relative; /* necesario para posicionar botones absolutos */
-}
-
-.final-buttons {
-  display: flex;
-  gap: 30px;
-  position: absolute;
-  bottom: 40px; /* ajusta la distancia desde abajo */
-  left: 50%;
-  transform: translateX(-50%);
-}
-
-/* ===== GAME OVER ===== */
-#pantallaGameOver {
-  display: none;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  min-height: 100vh;
-}
-/* RESET y fondo estrellado igual que antes ... (mantener todo lo anterior) */
-
-/* ===== CUADRO DE MENSAJE CARTA ===== */
+/* CUADRO MENSAJE CARTA */
 .mensaje-carta {
   position: absolute;
   top: 30%;
@@ -362,54 +308,4 @@ html, body {
   z-index: 10;
   border-radius: 10px;
   box-shadow: 0 0 20px #00f0ff;
-}
-
-/* ===== CUADRO ROSA PANTALLA ROMÁNTICA ===== */
-.cuadro-rosa {
-  position: absolute;
-  top: 50px;
-  left: 50%;
-  transform: translateX(-50%);
-  max-width: 900px;
-  padding: 30px;
-  background-color: rgba(255, 102, 204, 0.8);
-  border-radius: 20px;
-  border: 3px solid #ff66cc;
-  color: black;
-  text-align: left;
-  z-index: 5;
-  box-shadow: 0 0 20px #ff66cc;
-}
-/* Cuadro título romántico */
-.titulo-rosa {
-  position: absolute;
-  top: 50px;
-  left: 50%;
-  transform: translateX(-50%);
-  max-width: 900px;
-  padding: 20px;
-  background-color: rgba(255, 102, 204, 0.9);
-  border-radius: 20px;
-  border: 3px solid #ff66cc;
-  color: black;
-  text-align: center;
-  z-index: 5;
-  box-shadow: 0 0 25px #ff66cc, 0 0 40px #ff33aa;
-}
-
-/* Cuadro mensaje romántico */
-.mensaje-rosa {
-  position: absolute;
-  top: 200px; /* ajusta según prefieras */
-  left: 50%;
-  transform: translateX(-50%);
-  max-width: 900px;
-  padding: 30px;
-  background-color: rgba(255, 102, 204, 0.8);
-  border-radius: 20px;
-  border: 3px solid #ff66cc;
-  color: black;
-  text-align: left;
-  z-index: 5;
-  box-shadow: 0 0 20px #ff66cc;
 }
