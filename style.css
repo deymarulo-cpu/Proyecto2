@@ -175,23 +175,17 @@ html, body {
 }
 
 .pantalla h2 {
-  text-align: left;       /* alineado a la izquierda */
-  line-height: 3;         /* espacio entre líneas */
-  margin: 50px 0 0 50px;  /* margen superior y a la izquierda */
-  max-width: 600px;       /* limita ancho del texto */
-  font-size: 28px;        /* tamaño de letra */
-}
-h2 {
   text-align: left;
-  margin-left: 20px;
-  line-height: 3;
-  font-size: 24px;
+  line-height: 3;             /* espacio entre líneas */
+  margin: 50px 0 0 50px;      /* margen desde arriba y izquierda */
+  max-width: 600px;
+  font-size: 28px;
   color: white;
-  overflow: hidden; /* importante para animaciones tipo máquina de escribir */
+  overflow: hidden;            /* importante para animación */
 }
 
-h2 span {
+.pantalla h2 span {
   opacity: 0;
   display: inline-block;
-  transition: opacity 0.3s ease; /* tiempo de aparición de cada letra */
+  transition: opacity 0.3s ease;
 }
