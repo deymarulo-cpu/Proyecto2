@@ -425,3 +425,13 @@ html, body {
   0% { transform: translateY(100vh); opacity: 0.6; }
   100% { transform: translateY(-10vh); opacity: 0; }
 }
+/* ===== AURA ROMÁNTICA GLOBAL ===== */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(circle at center, rgba(255, 102, 204, 0.15), transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
