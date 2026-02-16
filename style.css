@@ -1,4 +1,4 @@
-/* RESET */
+/* ===== RESET ===== */
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
 html, body {
@@ -9,7 +9,7 @@ html, body {
   overflow: hidden;
 }
 
-/* FONDO ESTRELLADO */
+/* ===== FONDO ESTRELLADO ===== */
 .stars {
   position: fixed;
   top: 0;
@@ -55,7 +55,7 @@ html, body {
 
 @keyframes blink { from { opacity: 0.5; } to { opacity: 1; } }
 
-/* TRANSICIÓN PIXEL */
+/* ===== TRANSICIÓN PIXEL ===== */
 .pixel-transition {
   position: fixed;
   top: 0;
@@ -71,7 +71,7 @@ html, body {
 
 .pixel { background: black; transform: scale(0); transition: transform 0.3s ease; }
 
-/* PANTALLA INICIO */
+/* ===== PANTALLA INICIO ===== */
 .inicio {
   position: fixed;
   top: 0; left: 0;
@@ -106,7 +106,7 @@ html, body {
 
 .cuadro-start button:hover { background: #00f0ff; color: black; }
 
-/* CONTENIDO PRINCIPAL */
+/* ===== CONTENIDO PRINCIPAL / PANTALLAS ===== */
 .pantalla {
   min-height: 100vh;
   display: flex;
@@ -114,6 +114,7 @@ html, body {
   align-items: flex-start;
   position: relative;
   z-index: 1;
+  flex-direction: column;
 }
 
 .pantalla h2 {
@@ -134,22 +135,7 @@ html, body {
   margin-right: 2px;
 }
 
-/* BOTÓN CONTINUAR */
-#botonContinuar {
-  margin: 20px 0 0 20px;
-  padding: 15px 35px;
-  font-family: 'Press Start 2P', Arial, sans-serif;
-  font-size: 18px;
-  border: 3px solid #00f0ff;
-  background: black;
-  color: #00f0ff;
-  cursor: pointer;
-  transition: 0.2s;
-}
-
-#botonContinuar:hover { background: #00f0ff; color: black; }
-
-/* FLORES DE LOTO */
+/* ===== FLORES DE LOTO ===== */
 .lotos {
   position: absolute;
   bottom: 5%;
@@ -193,7 +179,7 @@ html, body {
   100% { transform: rotate(-3deg); }
 }
 
-/* Pantalla de cartas centrada */
+/* ===== PANTALLA DE CARTAS ===== */
 #pantallaCartas {
   display: flex;
   justify-content: center;
@@ -202,8 +188,6 @@ html, body {
   flex-direction: column;
   gap: 40px;
   background-color: #000814;
-  color: white;
-  font-family: 'Press Start 2P', Arial, sans-serif;
 }
 
 .cartas-container {
@@ -229,7 +213,7 @@ html, body {
   box-shadow: 0 0 20px #00f0ff;
 }
 
-/* Botones a la derecha */
+/* ===== BOTONES ===== */
 .boton-derecha {
   position: absolute;
   top: 50%;
@@ -245,12 +229,8 @@ html, body {
   transition: 0.2s;
 }
 
-.boton-derecha:hover {
-  background: #00f0ff;
-  color: black;
-}
+.boton-derecha:hover { background: #00f0ff; color: black; }
 
-/* Botones en inferior derecha */
 .boton-inferior-derecha {
   position: absolute;
   bottom: 20px;
@@ -265,12 +245,20 @@ html, body {
   transition: 0.2s;
 }
 
-.boton-inferior-derecha:hover {
-  background: #00f0ff;
-  color: black;
+.boton-inferior-derecha:hover { background: #00f0ff; color: black; }
+
+/* ===== PANTALLA ROMÁNTICA ===== */
+#pantallaRomantica {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding-top: 50px;
+  min-height: 100vh;
+  background-color: #000814;
+  text-align: left;
 }
 
-/* Nota romántica */
 .nota {
   max-width: 800px;
   margin: 20px auto;
@@ -279,3 +267,28 @@ html, body {
   padding: 0 20px;
 }
 
+/* ===== PANTALLA FINAL ===== */
+#pantallaFinal {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  min-height: 100vh;
+}
+
+.final-buttons {
+  display: flex;
+  gap: 30px;
+  margin-top: 20px;
+}
+
+/* ===== GAME OVER ===== */
+#pantallaGameOver {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  min-height: 100vh;
+}
