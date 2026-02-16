@@ -77,3 +77,25 @@ function animarTexto() {
     }
   });
 }
+// Detectar click en flor central
+const florCentral = document.querySelector(".loto-der2");
+
+florCentral.addEventListener("click", () => {
+  // Efecto de transición (fade out pantalla actual)
+  const pantallaActual = document.getElementById("pantallaPrincipal");
+  pantallaActual.style.transition = "opacity 0.8s";
+  pantallaActual.style.opacity = 0;
+
+  setTimeout(() => {
+    pantallaActual.style.display = "none";
+
+    // Mostrar pantalla de cartas
+    const pantallaCartas = document.getElementById("pantallaCartas");
+    pantallaCartas.style.display = "flex";
+    pantallaCartas.style.opacity = 0;
+    pantallaCartas.style.transition = "opacity 0.8s";
+    setTimeout(() => {
+      pantallaCartas.style.opacity = 1;
+    }, 50);
+  }, 800);
+});
