@@ -71,32 +71,18 @@ function iniciarTodo() {
     });
 
     // Pantalla final
-   // Pantalla final: SI -> mostrar corazón / NO -> GAME OVER
-const botonSi = document.getElementById("botonSi");
-const botonNo = document.getElementById("botonNo");
+    document.getElementById("botonSi").addEventListener("click", () => {
+      document.getElementById("pantallaFinal").style.display = "none";
+      document.getElementById("pantallaCorazon").style.display = "flex";
+    });
 
-if (botonSi) {
-  botonSi.addEventListener("click", () => {
-    const pantallaFinal = document.getElementById("pantallaFinal");
-    pantallaFinal.style.display = "none";
+    document.getElementById("botonNo").addEventListener("click", () => {
+      document.getElementById("pantallaFinal").style.display = "none";
+      document.getElementById("pantallaGameOver").style.display = "flex";
+    });
 
-if (botonNo) {
-  botonNo.addEventListener("click", () => {
-    const pantallaFinal = document.getElementById("pantallaFinal");
-    pantallaFinal.style.display = "none";
-
-    const pantallaGameOver = document.getElementById("pantallaGameOver");
-    if (pantallaGameOver) {
-      pantallaGameOver.style.display = "flex";
-      pantallaGameOver.style.opacity = 0;
-      pantallaGameOver.style.transition = "opacity 0.8s";
-      setTimeout(() => {
-        pantallaGameOver.style.opacity = 1;
-      }, 50);
-    }
-  });
+  }, 1500);
 }
-
 
 // TRANSICIÓN PIXEL
 function startGame() {
