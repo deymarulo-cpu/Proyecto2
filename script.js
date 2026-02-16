@@ -8,24 +8,22 @@ function iniciarTodo() {
     const botonPrincipal = document.getElementById("botonContinuarPrincipal");
     const florCentral = document.querySelector(".loto-der2");
 
-    // CLICK primer CONTINUAR
+    // CLICK primer CONTINUAR: Principal -> Cartas
     botonPrincipal.addEventListener("click", () => {
-
-      // desaparecer flor central
       if (florCentral) {
         florCentral.style.transition = "opacity 0.8s, transform 0.8s";
         florCentral.style.opacity = 0;
         florCentral.style.transform = "scale(0)";
       }
 
-      // mover boton CONTINUAR a la posicion de la flor
+      // Mover boton CONTINUAR a la posición de la flor
       const rectFlor = florCentral.getBoundingClientRect();
       botonPrincipal.style.position = "absolute";
       botonPrincipal.style.top = rectFlor.top + "px";
       botonPrincipal.style.left = rectFlor.left + "px";
       botonPrincipal.style.transform = "translate(0,0)";
 
-      // pasar a pantalla de cartas
+      // Transición a pantalla Cartas
       setTimeout(() => {
         const pantallaActual = document.getElementById("pantallaPrincipal");
         pantallaActual.style.transition = "opacity 0.8s";
@@ -42,10 +40,9 @@ function iniciarTodo() {
       }, 500);
     });
 
-    // CARTAS: mostrar mensaje en cuadro
+    // CARTAS: mostrar mensaje al hacer click
     const cartas = document.querySelectorAll("#pantallaCartas .carta");
     const mensajeCarta = document.getElementById("mensajeCarta");
-
     cartas.forEach(carta => {
       carta.addEventListener("click", () => {
         mensajeCarta.innerHTML = carta.dataset.mensaje;
@@ -53,7 +50,7 @@ function iniciarTodo() {
       });
     });
 
-    // CONTINUAR cartas -> romántica
+    // CONTINUAR Cartas -> Pantalla Romántica
     const botonCartas = document.getElementById("botonContinuarCartas");
     botonCartas.addEventListener("click", () => {
       const pantallaCartas = document.getElementById("pantallaCartas");
@@ -69,42 +66,40 @@ function iniciarTodo() {
       }, 800);
     });
 
-    // CONTINUAR romántica -> pantalla final
-  const botonRomantica = document.getElementById("botonContinuarRomantica");
-botonRomantica.addEventListener("click", () => {
-  // Hacer desaparecer las flores de loto
-  const lotos = document.querySelectorAll('.loto');
-  lotos.forEach(loto => {
-    loto.style.transition = "opacity 0.8s, transform 0.8s";
-    loto.style.opacity = 0;
-    loto.style.transform = "scale(0) translateY(50px)";
-  });
+    // CONTINUAR Romántica -> Pantalla Final
+    const botonRomantica = document.getElementById("botonContinuarRomantica");
+    botonRomantica.addEventListener("click", () => {
+      // Hacer desaparecer SOLO la flor central
+      const florCentral = document.querySelector(".loto-der2");
+      if (florCentral) {
+        florCentral.style.transition = "opacity 0.8s, transform 0.8s";
+        florCentral.style.opacity = 0;
+        florCentral.style.transform = "scale(0) translateY(50px)";
+      }
 
-  // Desaparecer pantalla romántica y mostrar final
-  const pantallaRomantica = document.getElementById("pantallaRomantica");
-  pantallaRomantica.style.transition = "opacity 0.8s";
-  pantallaRomantica.style.opacity = 0;
-  
-  setTimeout(() => {
-    pantallaRomantica.style.display = "none";
-    const pantallaFinal = document.getElementById("pantallaFinal");
-    pantallaFinal.style.display = "flex";
-    pantallaFinal.style.opacity = 0;
-    pantallaFinal.style.transition = "opacity 0.8s";
-    setTimeout(() => { pantallaFinal.style.opacity = 1; }, 50);
-  }, 800);
-});
+      // Desaparecer pantalla romántica y mostrar final
+      const pantallaRomantica = document.getElementById("pantallaRomantica");
+      pantallaRomantica.style.transition = "opacity 0.8s";
+      pantallaRomantica.style.opacity = 0;
 
-    // Pantalla final: SI -> TikTok / NO -> GAME OVER
+      setTimeout(() => {
+        pantallaRomantica.style.display = "none";
+        const pantallaFinal = document.getElementById("pantallaFinal");
+        pantallaFinal.style.display = "flex";
+        pantallaFinal.style.opacity = 0;
+        pantallaFinal.style.transition = "opacity 0.8s";
+        setTimeout(() => { pantallaFinal.style.opacity = 1; }, 50);
+      }, 800);
+    });
+
+    // Pantalla Final: SI -> TikTok / NO -> GAME OVER
     document.getElementById("botonSi").addEventListener("click", () => {
       window.location.href = "https://vt.tiktok.com/ZSmkXQ9mE/";
     });
 
     document.getElementById("botonNo").addEventListener("click", () => {
-      const pantallaFinal = document.getElementById("pantallaFinal");
-      pantallaFinal.style.display = "none";
-      const pantallaGameOver = document.getElementById("pantallaGameOver");
-      pantallaGameOver.style.display = "flex";
+      document.getElementById("pantallaFinal").style.display = "none";
+      document.getElementById("pantallaGameOver").style.display = "flex";
     });
 
   }, 1500);
@@ -161,32 +156,9 @@ function animarTexto() {
       }, delayTotal + idxLetra * 100);
     });
     delayTotal += linea.length * 100 + 300;
-    if (idxLinea < lineas.length - 1) { const br = document.createElement("br"); h2.appendChild(br);}
+    if (idxLinea < lineas.length - 1) {
+      const br = document.createElement("br");
+      h2.appendChild(br);
+    }
   });
 }
-// CONTINUAR romántica -> pantalla final
-const botonRomantica = document.getElementById("botonContinuarRomantica");
-botonRomantica.addEventListener("click", () => {
-  // Hacer desaparecer SOLO la flor central
-  const florCentral = document.querySelector(".loto-der2");
-  if (florCentral) {
-    florCentral.style.transition = "opacity 0.8s, transform 0.8s";
-    florCentral.style.opacity = 0;
-    florCentral.style.transform = "scale(0) translateY(50px)";
-  }
-
-  // Desaparecer pantalla romántica y mostrar final
-  const pantallaRomantica = document.getElementById("pantallaRomantica");
-  pantallaRomantica.style.transition = "opacity 0.8s";
-  pantallaRomantica.style.opacity = 0;
-
-  setTimeout(() => {
-    pantallaRomantica.style.display = "none";
-    const pantallaFinal = document.getElementById("pantallaFinal");
-    pantallaFinal.style.display = "flex";
-    pantallaFinal.style.opacity = 0;
-    pantallaFinal.style.transition = "opacity 0.8s";
-    setTimeout(() => { pantallaFinal.style.opacity = 1; }, 50);
-  }, 800);
-});
-
