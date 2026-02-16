@@ -1,21 +1,14 @@
 function iniciarTodo() {
-  startGame();
-
-  setTimeout(() => {
+  startGame(() => { // <-- callback al final de la transición del START
     florecerLotos();
     animarTexto();
 
-    // Flores
+    const botonPrincipal = document.getElementById("botonContinuarPrincipal");
     const florCentral = document.querySelector(".loto-der2");
     const florIzq = document.querySelector(".loto-izq");
     const florDer1 = document.querySelector(".loto-der1");
 
-    // BOTONES
-    const botonPrincipal = document.getElementById("botonContinuarPrincipal");
-    const botonCartas = document.getElementById("botonContinuarCartas");
-    const botonRomantica = document.getElementById("botonContinuarRomantica");
-
-    // ------------------- PRIMER CONTINUAR -------------------
+    // CLICK primer CONTINUAR
     botonPrincipal.addEventListener("click", () => {
       // Desaparece solo la flor central
       if (florCentral) {
@@ -25,33 +18,26 @@ function iniciarTodo() {
       }
 
       // Transición a pantalla de cartas
-      const pantallaActual = document.getElementById("pantallaPrincipal");
-      pantallaActual.style.transition = "opacity 0.8s";
-      pantallaActual.style.opacity = 0;
-
       setTimeout(() => {
-        pantallaActual.style.display = "none";
-        const pantallaCartas = document.getElementById("pantallaCartas");
-        pantallaCartas.style.display = "flex";
-        pantallaCartas.style.opacity = 0;
-        pantallaCartas.style.transition = "opacity 0.8s";
-        setTimeout(() => { pantallaCartas.style.opacity = 1; }, 50);
-      }, 800);
+        const pantallaActual = document.getElementById("pantallaPrincipal");
+        pantallaActual.style.transition = "opacity 0.8s";
+        pantallaActual.style.opacity = 0;
+
+        setTimeout(() => {
+          pantallaActual.style.display = "none";
+          const pantallaCartas = document.getElementById("pantallaCartas");
+          pantallaCartas.style.display = "flex";
+          pantallaCartas.style.opacity = 0;
+          pantallaCartas.style.transition = "opacity 0.8s";
+          setTimeout(() => { pantallaCartas.style.opacity = 1; }, 50);
+        }, 800);
+      }, 500);
     });
 
-    // ------------------- PANTALLA CARTAS -------------------
-    const cartas = document.querySelectorAll("#pantallaCartas .carta");
-    const mensajeCarta = document.getElementById("mensajeCarta");
-
-    cartas.forEach(carta => {
-      carta.addEventListener("click", () => {
-        mensajeCarta.innerHTML = carta.dataset.mensaje;
-        mensajeCarta.style.display = "block";
-      });
-    });
-
-    // CONTINUAR cartas → desaparecen flores izquierda y derecha
+    // CONTINUAR cartas -> romántica
+    const botonCartas = document.getElementById("botonContinuarCartas");
     botonCartas.addEventListener("click", () => {
+      // Desaparecen las flores de los lados
       [florIzq, florDer1].forEach(flor => {
         if (flor) {
           flor.style.transition = "opacity 0.8s, transform 0.8s";
@@ -73,43 +59,25 @@ function iniciarTodo() {
         setTimeout(() => { pantallaRomantica.style.opacity = 1; }, 50);
       }, 800);
     });
+  });
+}
 
-    // ------------------- PANTALLA ROMÁNTICA -------------------
-    botonRomantica.addEventListener("click", () => {
-      const pantallaRomantica = document.getElementById("pantallaRomantica");
-      pantallaRomantica.style.transition = "opacity 0.8s";
-      pantallaRomantica.style.opacity = 0;
+// MODIFICACIÓN de startGame para usar callback
+function startGame(callback) {
+  const transition = document.querySelector(".pixel-transition");
+  transition.innerHTML = "";
+  for (let i = 0; i < 400; i++) {
+    const pixel = document.createElement("div");
+    pixel.classList.add("pixel");
+    transition.appendChild(pixel);
+    setTimeout(() => { pixel.style.transform = "scale(1)"; }, Math.random() * 500);
+  }
 
-      setTimeout(() => {
-        pantallaRomantica.style.display = "none";
-        const pantallaFinal = document.getElementById("pantallaFinal");
-        pantallaFinal.style.display = "flex";
-        pantallaFinal.style.opacity = 0;
-        pantallaFinal.style.transition = "opacity 0.8s";
-        setTimeout(() => { pantallaFinal.style.opacity = 1; }, 50);
-      }, 800);
-    });
+  setTimeout(() => {
+    document.querySelector(".inicio").style.display = "none";
+    document.getElementById("pantallaPrincipal").style.display = "block";
+    transition.innerHTML = "";
 
-    // ------------------- PANTALLA FINAL -------------------
-    document.getElementById("botonSi").addEventListener("click", () => {
-      const pantallaFinal = document.getElementById("pantallaFinal");
-      pantallaFinal.style.display = "none";
-
-      const pantallaCorazon = document.getElementById("pantallaCorazon");
-      if (pantallaCorazon) {
-        pantallaCorazon.style.display = "flex";
-        pantallaCorazon.style.opacity = 0;
-        pantallaCorazon.style.transition = "opacity 0.8s";
-        setTimeout(() => { pantallaCorazon.style.opacity = 1; }, 50);
-      }
-    });
-
-    document.getElementById("botonNo").addEventListener("click", () => {
-      const pantallaFinal = document.getElementById("pantallaFinal");
-      pantallaFinal.style.display = "none";
-      const pantallaGameOver = document.getElementById("pantallaGameOver");
-      pantallaGameOver.style.display = "flex";
-    });
-
-  }, 1500);
+    if (callback) callback(); // <-- aquí agregamos los listeners
+  }, 1200);
 }
