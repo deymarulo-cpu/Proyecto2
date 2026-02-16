@@ -275,12 +275,16 @@ html, body {
   align-items: center;
   text-align: center;
   min-height: 100vh;
+  position: relative; /* necesario para posicionar botones absolutos */
 }
 
 .final-buttons {
   display: flex;
   gap: 30px;
-  margin-top: 20px;
+  position: absolute;
+  bottom: 40px; /* ajusta la distancia desde abajo */
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 /* ===== GAME OVER ===== */
