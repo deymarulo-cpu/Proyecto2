@@ -2,35 +2,39 @@
 function iniciarTodo() {
   startGame();
 
-  // Florecer lotos y animar texto después de la transición
+  // Esperar a que la pantalla principal se muestre y los lotos florezcan
   setTimeout(() => {
     florecerLotos();
     animarTexto();
 
     // ===== CLICK EN LA FLOR CENTRAL =====
     const florCentral = document.querySelector(".loto-der2");
-    florCentral.style.cursor = "pointer"; // indicar que se puede clicar
+    if (florCentral) {
+      florCentral.style.cursor = "pointer"; // indica que se puede clicar
 
-    florCentral.addEventListener("click", () => {
-      const pantallaActual = document.getElementById("pantallaPrincipal");
-      pantallaActual.style.transition = "opacity 0.8s";
-      pantallaActual.style.opacity = 0;
-
-      setTimeout(() => {
-        pantallaActual.style.display = "none";
-
-        const pantallaCartas = document.getElementById("pantallaCartas");
-        pantallaCartas.style.display = "flex";
-        pantallaCartas.style.opacity = 0;
-        pantallaCartas.style.transition = "opacity 0.8s";
+      florCentral.addEventListener("click", () => {
+        // Fade out de pantalla principal
+        const pantallaActual = document.getElementById("pantallaPrincipal");
+        pantallaActual.style.transition = "opacity 0.8s";
+        pantallaActual.style.opacity = 0;
 
         setTimeout(() => {
-          pantallaCartas.style.opacity = 1;
-        }, 50);
-      }, 800);
-    });
+          pantallaActual.style.display = "none";
 
-  }, 1200);
+          // Mostrar pantalla de cartas
+          const pantallaCartas = document.getElementById("pantallaCartas");
+          pantallaCartas.style.display = "flex";
+          pantallaCartas.style.opacity = 0;
+          pantallaCartas.style.transition = "opacity 0.8s";
+
+          setTimeout(() => {
+            pantallaCartas.style.opacity = 1;
+          }, 50);
+        }, 800);
+      });
+    }
+
+  }, 1500); // espera suficiente para que termine la transición pixel
 }
 
 // ===== TRANSICIÓN PIXEL =====
