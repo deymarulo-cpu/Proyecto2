@@ -1,8 +1,8 @@
 // ===== AUDIOS =====
-const song1 = new Audio("https://raw.githubusercontent.com/tuusuario/tuRepo/main/song1.mp3"); // START
-const song2 = new Audio("https://raw.githubusercontent.com/tuusuario/tuRepo/main/song2.mp3"); // carta 1
-const song3 = new Audio("https://raw.githubusercontent.com/tuusuario/tuRepo/main/song3.mp3"); // carta 2
-const song4 = new Audio("https://raw.githubusercontent.com/tuusuario/tuRepo/main/song4.mp3"); // botón SI
+const song1 = new Audio("https://drive.google.com/uc?export=download&id=1p2R7Br3eLXPqgXp-VZU7bWl_q6qk3_Mf"); // START
+const song2 = new Audio("https://drive.google.com/uc?export=download&id=1rn_L-SlkoH6L3e6PzMCn65joGI5Zqe_i"); // carta 1
+const song3 = new Audio("https://drive.google.com/uc?export=download&id=1IGaMTpmE8k6f5SlEjUmmTGAlFvSHMniX"); // carta 2
+const song4 = new Audio("https://drive.google.com/uc?export=download&id=1WnZIvW6DL9fYu3E4vJNxmfiPCybpMDEY"); // boton SI
 
 function iniciarTodo() {
   startGame(() => { // callback al terminar la animación de START
