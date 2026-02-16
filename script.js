@@ -1,8 +1,8 @@
 // ===== AUDIOS =====
-const song1 = new Audio("https://drive.google.com/uc?export=download&id=1p2R7Br3eLXPqgXp-VZU7bWl_q6qk3_Mf"); // START
-const song2 = new Audio("https://drive.google.com/uc?export=download&id=1rn_L-SlkoH6L3e6PzMCn65joGI5Zqe_i"); // carta 1
-const song3 = new Audio("https://drive.google.com/uc?export=download&id=1IGaMTpmE8k6f5SlEjUmmTGAlFvSHMniX"); // carta 2
-const song4 = new Audio("https://drive.google.com/uc?export=download&id=1WnZIvW6DL9fYu3E4vJNxmfiPCybpMDEY"); // boton SI
+const song1 = new Audio("audios/SONG.1.MP3");
+const song2 = new Audio("audios/SONG.2.MP3");
+const song3 = new Audio("audios/SONG.3.MP3");
+const song4 = new Audio("audios/SONG.4.MP3");
 
 function iniciarTodo() {
   startGame(() => { // callback al terminar la animación de START
